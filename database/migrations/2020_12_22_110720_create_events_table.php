@@ -6,31 +6,35 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateEventsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-      Schema::create('events', function (Blueprint $table) {
-        $table->id();
-        $table->string('title');
-        $table->string('slug');
-        $table->text('content');
-        $table->string('location');
-        $table->date('date');
-        $table->timestamps();
-      });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('events', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId('user_id')->constrained();
+      $table->string('title');
+      $table->string('slug')->unique();
+      $table->text('body');
+      $table->string('image')->nullable();
+      $table->string('place')->nullable();
+      $table->date('startdate')->nullable();
+      $table->date('enddate')->nullable();
+      $table->string('status')->nullable();
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('events');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('events');
+  }
 }

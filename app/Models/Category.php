@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    
+
     /**
      * guarded
      *
      * @var array
      */
     protected $guarded = [];
-    
+
     /**
      * post
      *
@@ -24,5 +24,10 @@ class Category extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
     }
 }

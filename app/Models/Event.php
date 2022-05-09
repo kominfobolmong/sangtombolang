@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    
+
     /**
      * guarded
      *
@@ -25,5 +25,10 @@ class Event extends Model
     public function getImageAttribute($image)
     {
         return asset('storage/events/' . $image);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
