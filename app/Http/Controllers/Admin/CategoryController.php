@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['permission:categories.index|categories.create|categories.edit|sliders.delete']);
+        $this->middleware(['permission:categories.index|categories.create|categories.edit|categories.delete']);
     }
 
     /**
@@ -26,8 +26,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->when(request()->q, function($categories) {
-            $categories = $categories->where('name', 'like', '%'. request()->q . '%');
+        $categories = Category::latest()->when(request()->q, function ($categories) {
+            $categories = $categories->where('name', 'like', '%' . request()->q . '%');
         })->paginate(10);
 
         return view('admin.category.index', compact('categories'));
@@ -57,13 +57,13 @@ class CategoryController extends Controller
 
         $category = Category::create([
             'name' => $request->input('name'),
-            'slug' => Str::slug($request->input('name'), '-') 
+            'slug' => Str::slug($request->input('name'), '-')
         ]);
 
-        if($category){
+        if ($category) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.category.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.category.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -90,19 +90,19 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $this->validate($request, [
-            'name' => 'required|unique:categories,name,'.$category->id
+            'name' => 'required|unique:categories,name,' . $category->id
         ]);
 
         $category = Category::findOrFail($category->id);
         $category->update([
             'name' => $request->input('name'),
-            'slug' => Str::slug($request->input('name'), '-') 
+            'slug' => Str::slug($request->input('name'), '-')
         ]);
 
-        if($category){
+        if ($category) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.category.index')->with(['success' => 'Data Berhasil Diupdate!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.category.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
@@ -119,11 +119,11 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        if($category){
+        if ($category) {
             return response()->json([
                 'status' => 'success'
             ]);
-        }else{
+        } else {
             return response()->json([
                 'status' => 'error'
             ]);

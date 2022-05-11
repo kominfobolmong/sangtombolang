@@ -4,14 +4,14 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>News</h1>
+            <h1>Berita</h1>
         </div>
 
         <div class="section-body">
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-newspaper"></i> News</h4>
+                    <h4><i class="fas fa-newspaper"></i> Berita</h4>
                 </div>
 
                 <div class="card-body">

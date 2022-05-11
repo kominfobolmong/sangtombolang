@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Dashboard &mdash; BOLMONGKAB</title>
+    <title>Dashboard &mdash; KECAMATAN</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/bolmongkab.png') }}" type="image/x-icon">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -59,27 +59,27 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.html">BOLMONGKAB</a>
+                        <a href="#">KECAMATAN</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="index.html">BOLMONGKAB</a>
+                        <a href="#">KEC</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">MAIN MENU</li>
                         <li class="{{ setActive('admin/dashboard') }}"><a class="nav-link"
                                 href="{{ route('admin.dashboard.index') }}"><i class="fas fa-tachometer-alt"></i>
                                 <span>Dashboard</span></a></li>
-                        @can('posts.index')
+                        {{-- @can('posts.index')
                                 <li class="{{ setActive('admin/post') }}"><a class="nav-link" href="{{ route('admin.post.index') }}
                             "><i class="fas fa-book-open"></i>
                             <span>Pengumuman</span></a></li>
-                        @endcan
-
-                        {{-- @can('news.index')
-                                <li class="{{ setActive('admin/news') }}"><a class="nav-link" href="{{ route('admin.news.index') }}
-                            "><i class="fas fa-book-open"></i>
-                            <span>Berita</span></a></li>
                         @endcan --}}
+
+                        @can('news.index')
+                                <li class="{{ setActive('admin/news') }}"><a class="nav-link" href="{{ route('admin.news.index') }}
+                            "><i class="fas fa-newspaper"></i>
+                            <span>Berita</span></a></li>
+                        @endcan
 
                         @can('tags.index')
                             <li class="{{ setActive('admin/tag') }}"><a class="nav-link" href="{{ route('admin.tag.index') }}"><i class="fas fa-tags"></i> <span>Tags</span></a>
@@ -102,20 +102,20 @@
                         <span>Pimpinan</span></a></li>
                         @endcan
 
-                        @can('statiks.index')
+                        {{-- @can('statiks.index')
                             <li class="{{ setActive('admin/statik') }}"><a class="nav-link" href="{{ route('admin.statik.index') }}"><i class="fas fa-columns"></i>
                         <span>Halaman</span></a></li>
-                        @endcan
+                        @endcan --}}
 
-                        @can('travels.index')
+                        {{-- @can('travels.index')
                             <li class="{{ setActive('admin/travel') }}"><a class="nav-link" href="{{ route('admin.travel.index') }}"><i class="fas fa-columns"></i>
                         <span>Travel</span></a></li>
-                        @endcan
+                        @endcan --}}
 
-                        @can('instansis.index')
+                        {{-- @can('instansis.index')
                             <li class="{{ setActive('admin/instansi') }}"><a class="nav-link" href="{{ route('admin.instansi.index') }}"><i class="fas fa-info-circle"></i>
                         <span>Informasi Instansi</span></a></li>
-                        @endcan
+                        @endcan --}}
 
                         {{-- @can('dinasdetails.index')
                             <li class="{{ setActive('admin/dinasdetail') }}"><a class="nav-link" href="{{ route('admin.dinasdetail.index') }}"><i class="fas fa-info-circle"></i>
@@ -193,7 +193,7 @@
 
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2021 <div class="bullet"></div> Diskominfo <div class="bullet"></div> All Rights
+                    Copyright &copy; {{ date('Y') }} <div class="bullet"></div> Diskominfo <div class="bullet"></div> All Rights
                     Reserved.
                 </div>
                 <div class="footer-right">
