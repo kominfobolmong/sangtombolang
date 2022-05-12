@@ -72,7 +72,7 @@
                             <label>KONTEN</label>
                             <textarea class="form-control content @error('body') is-invalid @enderror" name="body"
                                 placeholder="Masukkan Konten / Isi Berita" rows="10">{!! old('content') !!}</textarea>
-                            @error('content')
+                            @error('body')
                             <div class="invalid-feedback" style="display: block">
                                 {{ $message }}
                             </div>
@@ -81,11 +81,16 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">TAGS</label>
-                            <select class="form-control" name="tags[]" multiple="multiple">
+                            <select class="form-control @error('body') is-invalid @enderror" name="tags[]" multiple="multiple">
                                 @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }} </option>
                                 @endforeach
                             </select>
+                            @error('tags')
+                            <div class="invalid-feedback" style="display: block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
 
                         <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i>
@@ -100,7 +105,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js"></script>
-<!-- <script>
+<script>
     var editor_config = {
         selector: "textarea.content",
         plugins: [
@@ -116,5 +121,5 @@
 
     tinymce.init(editor_config);
 
-</script> -->
+</script>
 @stop

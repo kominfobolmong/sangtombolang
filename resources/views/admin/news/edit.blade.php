@@ -29,6 +29,7 @@
                             </div>
                             @enderror
                         </div>
+                        
                         <div class="form-group">
                             <label>GAMBAR</label>
                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
@@ -102,7 +103,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js"></script>
-<!-- <script>
+<script>
     var editor_config = {
         selector: "textarea.content",
         plugins: [
@@ -117,5 +118,5 @@
     };
 
     tinymce.init(editor_config);
-</script> -->
+</script>
 @stop

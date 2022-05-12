@@ -59,11 +59,12 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image'         => 'required|image|mimes:jpeg,jpg,png|max:2000',
-            'title'         => 'required|unique:news',
-            'category_id'   => 'required',
-            'user_id'   => 'required',
-            'body'       => 'required',
+            'image'       => 'required|image|mimes:jpeg,jpg,png|max:2000',
+            'title'       => 'required|unique:news',
+            'category_id' => 'required',
+            'user_id'     => 'required',
+            'body'        => 'required',
+            'tags'        => 'required',
         ]);
 
         //upload image
@@ -75,8 +76,8 @@ class NewsController extends Controller
             'title'       => $request->input('title'),
             'slug'        => Str::slug($request->input('title'), '-'),
             'category_id' => $request->input('category_id'),
-            'user_id' => $request->input('user_id'),
-            'body'     => $request->input('body'),
+            'user_id'     => $request->input('user_id'),
+            'body'        => $request->input('body'),
         ]);
 
         //assign tags
@@ -116,10 +117,10 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $this->validate($request, [
-            'title'         => 'required|unique:news,title,' . $news->id,
-            'category_id'   => 'required',
-            'user_id'   => 'required',
-            'body'       => 'required',
+            'title'       => 'required|unique:news,title,' . $news->id,
+            'category_id' => 'required',
+            'user_id'     => 'required',
+            'body'        => 'required',
         ]);
 
         if ($request->file('image') == "") {
@@ -129,13 +130,14 @@ class NewsController extends Controller
                 'title'       => $request->input('title'),
                 'slug'        => Str::slug($request->input('title'), '-'),
                 'category_id' => $request->input('category_id'),
-                'user_id' => $request->input('user_id'),
-                'body'     => $request->input('body')
+                'user_id'     => $request->input('user_id'),
+                'body'        => $request->input('body')
             ]);
         } else {
 
             //remove old image
-            Storage::disk('local')->delete('public/news_images/' . $news->image);
+            // Storage::disk('local')->delete('public/news_images/' . $news->image);
+            Storage::delete('public/news_images/' . $news->image);
 
             //upload new image
             $image = $request->file('image');
@@ -147,8 +149,8 @@ class NewsController extends Controller
                 'title'       => $request->input('title'),
                 'slug'        => Str::slug($request->input('title'), '-'),
                 'category_id' => $request->input('category_id'),
-                'user_id' => $request->input('user_id'),
-                'body'     => $request->input('body')
+                'user_id'     => $request->input('user_id'),
+                'body'        => $request->input('body')
             ]);
         }
 
@@ -174,6 +176,7 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
         Storage::disk('local')->delete('public/news_images/' . $news->image);
+        $news->tags()->detach();
         $news->delete();
 
         if ($news) {

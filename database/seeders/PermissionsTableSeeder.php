@@ -55,41 +55,11 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'videos.edit']);
         Permission::create(['name' => 'videos.delete']);
 
-        //permission for leaders
-        Permission::create(['name' => 'leaders.index']);
-        Permission::create(['name' => 'leaders.create']);
-        Permission::create(['name' => 'leaders.edit']);
-        Permission::create(['name' => 'leaders.delete']);
-
-        //permission for statiks
-        Permission::create(['name' => 'statiks.index']);
-        Permission::create(['name' => 'statiks.create']);
-        Permission::create(['name' => 'statiks.edit']);
-        Permission::create(['name' => 'statiks.delete']);
-
-        //permission for travels
-        Permission::create(['name' => 'travels.index']);
-        Permission::create(['name' => 'travels.create']);
-        Permission::create(['name' => 'travels.edit']);
-        Permission::create(['name' => 'travels.delete']);
-
         //permission for downloads
         Permission::create(['name' => 'downloads.index']);
         Permission::create(['name' => 'downloads.create']);
         Permission::create(['name' => 'downloads.edit']);
         Permission::create(['name' => 'downloads.delete']);
-
-        //permission for dinasdetails
-        Permission::create(['name' => 'dinasdetails.index']);
-        Permission::create(['name' => 'dinasdetails.create']);
-        Permission::create(['name' => 'dinasdetails.edit']);
-        Permission::create(['name' => 'dinasdetails.delete']);
-
-        //permission for instansis
-        Permission::create(['name' => 'instansis.index']);
-        Permission::create(['name' => 'instansis.create']);
-        Permission::create(['name' => 'instansis.edit']);
-        Permission::create(['name' => 'instansis.delete']);
 
         //permission for banners
         Permission::create(['name' => 'banners.index']);

@@ -97,10 +97,10 @@
                         <span>Agenda</span></a></li>
                         @endcan
 
-                        @can('leaders.index')
+                        {{-- @can('leaders.index')
                             <li class="{{ setActive('admin/leader') }}"><a class="nav-link" href="{{ route('admin.leader.index') }}"><i class="fas fa-user-tie"></i>
                         <span>Pimpinan</span></a></li>
-                        @endcan
+                        @endcan --}}
 
                         {{-- @can('statiks.index')
                             <li class="{{ setActive('admin/statik') }}"><a class="nav-link" href="{{ route('admin.statik.index') }}"><i class="fas fa-columns"></i>
