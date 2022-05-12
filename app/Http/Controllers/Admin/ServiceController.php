@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
-            /**
+    /**
      * __construct
      *
      * @return void
@@ -27,8 +27,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-            $services = Service::latest()->when(request()->q, function($services) {
-            $services = $services->where('nama', 'like', '%'. request()->q . '%');
+        $services = Service::latest()->when(request()->q, function ($services) {
+            $services = $services->where('nama', 'like', '%' . request()->q . '%');
         })->paginate(10);
 
         return view('admin.service.index', compact('services'));
@@ -53,26 +53,27 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'icon' => 'required|image|mimes:jpeg,jpg,png|max:2000',
-            'link' => 'required'
+            'nama'       => 'required',
+            'keterangan' => 'required',
+            'icon'       => 'image|mimes:jpeg,jpg,png|max:2000',
         ]);
 
         //upload icon
-        $icon = $request->file('icon');
-        $icon->storeAs('public/service-images', $icon->hashName());
+        if ($icon = $request->file('icon')) {
+            $icon->storeAs('public/service-images', $icon->hashName());
+        }
 
         $service = Service::create([
-            'nama' => $request->input('nama'),
-            'keterangan' => $request->input('keterangan'),
-            'icon' => $icon->hashName(),
-            'link' => $request->input('link')
+            'nama'    => $request->input('nama'),
+            'content' => $request->input('keterangan'),
+            'link'    => $request->input('link'),
+            'icon'    => ($request->file('icon')) ? $icon->hashName() : null,
         ]);
 
-        if($service){
+        if ($service) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.service.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.service.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -109,25 +110,24 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        $this->validate($request,[
-            'nama' => 'required',
-            'link' => 'required'
-            
+        $this->validate($request, [
+            'nama'       => 'required',
+            'keterangan' => 'required',
+            'icon'       => 'image|mimes:jpeg,jpg,png|max:2000',
         ]);
 
         if ($request->file('icon') == "") {
-        
+
             $service = Service::findOrFail($service->id);
             $service->update([
-                'nama' => $request->input('nama'),
-                'keterangan' => $request->input('keterangan'),
-                'link' => $request->input('link')  
+                'nama'    => $request->input('nama'),
+                'content' => $request->input('keterangan'),
+                'link'    => $request->input('link')
             ]);
-
         } else {
 
             //remove old image
-            Storage::disk('local')->delete('public/service-images/'.$service->icon);
+            Storage::disk('local')->delete('public/service-images/' . $service->icon);
 
             //upload new image
             $icon = $request->file('icon');
@@ -135,18 +135,17 @@ class ServiceController extends Controller
 
             $service = Service::findOrFail($service->id);
             $service->update([
-                'icon' => $icon->hashName(),
-                'nama' => $request->input('nama'),
-                'keterangan' => $request->input('keterangan'),
-                'link' => $request->input('link')  
+                'icon'    => $icon->hashName(),
+                'nama'    => $request->input('nama'),
+                'content' => $request->input('keterangan'),
+                'link'    => $request->input('link')
             ]);
-
         }
 
-        if($service){
+        if ($service) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.service.index')->with(['success' => 'Data Berhasil Diupdate!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.service.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
@@ -161,14 +160,14 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::findOrFail($id);
-        $icon = Storage::disk('local')->delete('public/service-images/'.$service->icon);
+        $icon = Storage::disk('local')->delete('public/service-images/' . $service->icon);
         $service->delete();
 
-        if($service){
+        if ($service) {
             return response()->json([
                 'status' => 'success'
             ]);
-        }else{
+        } else {
             return response()->json([
                 'status' => 'error'
             ]);

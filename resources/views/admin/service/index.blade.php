@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-video"></i> Layanan</h4>
+                    <h4><i class="fas fa-concierge-bell"></i> Layanan</h4>
                 </div>
 
                 <div class="card-body">
@@ -50,7 +50,7 @@
                                     <th scope="row" style="text-align: center">
                                         {{ ++$no + ($services->currentPage()-1) * $services->perPage() }}</th>
                                     <td>{{ $service->nama }}</td>
-                                    <td>{{ $service->keterangan }}</td>
+                                    <td>{{ $service->content }}</td>
                                     <td class="text-center"><img src="/storage/service-images/{{ $service->icon }}" style="width: 20%"></td>
                                     <td>{{ $service->link }}</td>
                                     <td class="text-center">

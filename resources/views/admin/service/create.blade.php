@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-video"></i> Tambah Pelayanan</h4>
+                    <h4><i class="fas fa-concierge-bell"></i> Tambah Pelayanan</h4>
                 </div>
 
                 <div class="card-body">
@@ -32,9 +32,9 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Keterangan:</strong>
-                                <input type="text" value="{{ old('keterangan') }}" name="keterangan" class="form-control"
-                                    placeholder="keterangan">
+                                <strong>Konten:</strong>
+                                    <textarea class="form-control content @error('keterangan') is-invalid @enderror" name="keterangan"
+                                placeholder="Masukkan Konten Layanan" rows="10">{!! old('keterangan') !!}</textarea>
                                 @error('keterangan')
                                 <div class="invalid-feedback" style="display: block">
                                     {{ $message }}
@@ -42,6 +42,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Link:</strong>
@@ -66,8 +67,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                            <button type="submit" class="btn btn-primary"
-                                onClick="return confirm('Simpan ?')">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                             <a class="btn btn-light" href="{{ route('admin.service.index') }}">Batal</a>
                         </div>
 
@@ -77,4 +77,23 @@
         </div>
     </section>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js"></script>
+<script>
+    var editor_config = {
+        selector: "textarea.content",
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+        relative_urls: false,
+        forced_root_block : false,
+    };
+
+    tinymce.init(editor_config);
+
+</script>
 @stop

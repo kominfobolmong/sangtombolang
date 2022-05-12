@@ -69,11 +69,6 @@
                         <li class="{{ setActive('admin/dashboard') }}"><a class="nav-link"
                                 href="{{ route('admin.dashboard.index') }}"><i class="fas fa-tachometer-alt"></i>
                                 <span>Dashboard</span></a></li>
-                        {{-- @can('posts.index')
-                                <li class="{{ setActive('admin/post') }}"><a class="nav-link" href="{{ route('admin.post.index') }}
-                            "><i class="fas fa-book-open"></i>
-                            <span>Pengumuman</span></a></li>
-                        @endcan --}}
 
                         @can('news.index')
                                 <li class="{{ setActive('admin/news') }}"><a class="nav-link" href="{{ route('admin.news.index') }}
@@ -96,31 +91,6 @@
                             <li class="{{ setActive('admin/event') }}"><a class="nav-link" href="{{ route('admin.event.index') }}"><i class="fas fa-bell"></i>
                         <span>Agenda</span></a></li>
                         @endcan
-
-                        {{-- @can('leaders.index')
-                            <li class="{{ setActive('admin/leader') }}"><a class="nav-link" href="{{ route('admin.leader.index') }}"><i class="fas fa-user-tie"></i>
-                        <span>Pimpinan</span></a></li>
-                        @endcan --}}
-
-                        {{-- @can('statiks.index')
-                            <li class="{{ setActive('admin/statik') }}"><a class="nav-link" href="{{ route('admin.statik.index') }}"><i class="fas fa-columns"></i>
-                        <span>Halaman</span></a></li>
-                        @endcan --}}
-
-                        {{-- @can('travels.index')
-                            <li class="{{ setActive('admin/travel') }}"><a class="nav-link" href="{{ route('admin.travel.index') }}"><i class="fas fa-columns"></i>
-                        <span>Travel</span></a></li>
-                        @endcan --}}
-
-                        {{-- @can('instansis.index')
-                            <li class="{{ setActive('admin/instansi') }}"><a class="nav-link" href="{{ route('admin.instansi.index') }}"><i class="fas fa-info-circle"></i>
-                        <span>Informasi Instansi</span></a></li>
-                        @endcan --}}
-
-                        {{-- @can('dinasdetails.index')
-                            <li class="{{ setActive('admin/dinasdetail') }}"><a class="nav-link" href="{{ route('admin.dinasdetail.index') }}"><i class="fas fa-info-circle"></i>
-                        <span>Informasi Dinas</span></a></li>
-                        @endcan --}}
 
                         @can('services.index')
                             <li class="{{ setActive('admin/service') }}"><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-concierge-bell"></i>

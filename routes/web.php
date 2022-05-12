@@ -3,17 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'index']);
 Route::get('/visi-misi', [App\Http\Controllers\PageController::class, 'visimisi']);
@@ -41,8 +30,6 @@ route::get('/pengumuman-detail/{pengumuman:id}', [App\Http\Controllers\PageContr
 route::get('/pengumuman-cari', [App\Http\Controllers\Pagecontroller::class, 'hascarpengumuman']);
 route::get('/event-detail/{event:id}', [App\Http\Controllers\PageController::class, 'eventDetail'])->name('event-detail');
 
-// Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'ShowLoginForm']);
-
 Auth::routes(['register' => false]);
 
 Route::prefix('admin')->group(function () {
@@ -67,29 +54,11 @@ Route::prefix('admin')->group(function () {
         //categories
         Route::resource('/category', App\Http\Controllers\Admin\CategoryController::class, ['except' => 'show', 'as' => 'admin']);
 
-        //posts
-        Route::resource('/post', App\Http\Controllers\Admin\PostController::class, ['except' => 'show', 'as' => 'admin']);
-
         //news
         Route::resource('/news', App\Http\Controllers\Admin\NewsController::class, ['except' => 'show', 'as' => 'admin']);
 
         //download
         Route::resource('/admin-download', App\Http\Controllers\Admin\DownloadController::class, ['except' => 'show', 'as' => 'admin']);
-
-        //leaders
-        Route::resource('/leader', App\Http\Controllers\Admin\LeaderController::class, ['except' => 'show', 'as' => 'admin']);
-
-        //statik
-        Route::resource('/statik', App\Http\Controllers\Admin\StatikController::class, ['except' => 'show', 'as' => 'admin']);
-
-        //travel
-        Route::resource('/travel', App\Http\Controllers\Admin\TravelController::class, ['except' => 'show', 'as' => 'admin']);
-
-        //instansi
-        Route::resource('/instansi', App\Http\Controllers\Admin\InstansiController::class, ['except' => 'show', 'as' => 'admin']);
-
-        //statik
-        Route::resource('/dinasdetail', App\Http\Controllers\Admin\DinasdetailController::class, ['except' => 'show', 'as' => 'admin']);
 
         //banners
         Route::resource('/banner', App\Http\Controllers\Admin\BannerController::class, ['except' => 'show', 'as' => 'admin']);
