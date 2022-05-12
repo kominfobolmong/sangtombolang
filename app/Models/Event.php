@@ -26,9 +26,4 @@ class Event extends Model
     {
         return asset('storage/events/' . $image);
     }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

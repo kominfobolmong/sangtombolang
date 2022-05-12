@@ -52,11 +52,6 @@ class User extends Authenticatable
         return $this->hasMany(News::class);
     }
 
-    public function events()
-    {
-        return $this->hasMany(Event::class);
-    }
-
     public function files()
     {
         return $this->hasMany(File::class);

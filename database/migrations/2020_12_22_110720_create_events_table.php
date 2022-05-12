@@ -15,13 +15,12 @@ class CreateEventsTable extends Migration
   {
     Schema::create('events', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
       $table->string('title');
       $table->string('slug')->unique();
-      $table->text('body');
+      $table->text('content');
       $table->string('image')->nullable();
-      $table->string('place')->nullable();
-      $table->date('startdate')->nullable();
+      $table->string('location')->nullable();
+      $table->date('date')->nullable();
       $table->date('enddate')->nullable();
       $table->string('status')->nullable();
       $table->timestamps();
