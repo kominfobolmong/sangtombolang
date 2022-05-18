@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-video"></i> Tambah Banner</h4>
+                    <h4><i class="fas fa-file-image"></i> Tambah Banner</h4>
                 </div>
 
                 <div class="card-body">
@@ -22,13 +22,14 @@
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Kolom</label>
+                                        <label class="input-group-text" for="inputGroupSelect01">Posisi</label>
                                     </div>
-                                    <select class="custom-select" id="inputGroupSelect01" name="kolom" id="kolom">
-                                        <option value="">Pilih Kolom</option>
-                                        <option value="kolom1">kolom 1</option>
-                                        <option value="kolom2">kolom 2</option>
-                                        <option value="kolom3">kolom 3</option>
+                                    <select class="custom-select" id="inputGroupSelect01" name="posisi" id="posisi">
+                                        <option value="">Pilih Posisi</option>
+                                        <option value="top">top</option>
+                                        <option value="bottom">bottom</option>
+                                        <option value="center">center</option>
+                                        <option value="side">side</option>
 
                                     </select>
                                 </div>
@@ -63,8 +64,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                            <button type="submit" class="btn btn-primary"
-                                onClick="return confirm('Simpan ?')">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                             <a class="btn btn-light" href="{{ route('admin.banner.index') }}">Batal</a>
                         </div>
                     </form>

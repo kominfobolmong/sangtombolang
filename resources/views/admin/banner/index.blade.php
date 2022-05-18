@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-video"></i> Banner</h4>
+                    <h4><i class="fas fa-file-image"></i> Banner</h4>
                 </div>
 
                 <div class="card-body">
@@ -37,8 +37,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                    <th scope="col">KOLOM</th>
                                     <th scope="col">IMAGE</th>
+                                    <th scope="col">POSISI</th>
                                     <th scope="col">LINK</th>
                                     <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                                 </tr>
@@ -48,8 +48,8 @@
                                 <tr>
                                     <th scope="row" style="text-align: center">
                                         {{ ++$no + ($banners->currentPage()-1) * $banners->perPage() }}</th>
-                                    <td>{{ $banner->kolom }}</td>
-                                    <td class="text-center"><img src="{{ $banner->image }}" style="width: 50px"></td>
+                                        <td class="text-center"><img src="{{ $banner->image }}" style="width: 200px"></td>
+                                        <td>{{ $banner->position }}</td>
                                     <td>{{ $banner->link }}</td>
                                     <td class="text-center">
                                     @can('banners.edit')

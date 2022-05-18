@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
 {
-            /**
+    /**
      * __construct
      *
      * @return void
@@ -27,8 +27,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = Banner::latest()->when(request()->q, function($banners) {
-            $banners = $banners->where('nama', 'like', '%'. request()->q . '%');
+        $banners = Banner::latest()->when(request()->q, function ($banners) {
+            $banners = $banners->where('nama', 'like', '%' . request()->q . '%');
         })->paginate(10);
 
         return view('admin.banner.index', compact('banners'));
@@ -53,9 +53,8 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'kolom' => 'required',
+            'posisi' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2000',
-            'link' => 'required'
         ]);
 
         //upload image
@@ -63,15 +62,15 @@ class BannerController extends Controller
         $image->storeAs('public/banner-images', $image->hashName());
 
         $banner = Banner::create([
-            'kolom' => $request->input('kolom'),
-            'image' => $image->hashName(),
-            'link' => $request->input('body')
+            'position' => $request->input('posisi'),
+            'image'    => $image->hashName(),
+            'link'     => $request->input('link')
         ]);
 
-        if($banner){
+        if ($banner) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.banner.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.banner.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -96,7 +95,10 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-        return view('admin.banner.edit', compact('banner'));
+        $banners = [
+            'top', 'bottom', 'center', 'side'
+        ];
+        return view('admin.banner.edit', compact('banner', 'banners'));
     }
 
     /**
@@ -108,23 +110,22 @@ class BannerController extends Controller
      */
     public function update(Request $request, Banner $banner)
     {
-        $this->validate($request,[
-            'kolom' => 'required',
-            'link' => 'required'
+        $this->validate($request, [
+            'posisi' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png|max:2000',
         ]);
 
         if ($request->file('image') == "") {
-        
+
             $banner = Banner::findOrFail($banner->id);
             $banner->update([
-                'kolom' => $request->input('kolom'),
-                'link' => $request->input('link')  
+                'position' => $request->input('posisi'),
+                'link'     => $request->input('link')
             ]);
-
         } else {
 
             //remove old image
-            Storage::disk('local')->delete('public/banner-images/'.$banner->image);
+            Storage::disk('local')->delete('public/banner-images/' . $banner->image);
 
             //upload new image
             $image = $request->file('image');
@@ -132,17 +133,16 @@ class BannerController extends Controller
 
             $banner = Banner::findOrFail($banner->id);
             $banner->update([
-                'image' => $image->hashName(),
-                'kolom' => $request->input('kolom'),
-                'link' => $request->input('link')  
+                'image'    => $image->hashName(),
+                'position' => $request->input('posisi'),
+                'link'     => $request->input('link')
             ]);
-
         }
 
-        if($banner){
+        if ($banner) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.banner.index')->with(['success' => 'Data Berhasil Diupdate!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.banner.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
@@ -157,14 +157,14 @@ class BannerController extends Controller
     public function destroy($id)
     {
         $banner = Banner::findOrFail($id);
-        $image = Storage::disk('local')->delete('public/banner-images/'.$banner->image);
+        $image = Storage::disk('local')->delete('public/banner-images/' . $banner->image);
         $banner->delete();
 
-        if($banner){
+        if ($banner) {
             return response()->json([
                 'status' => 'success'
             ]);
-        }else{
+        } else {
             return response()->json([
                 'status' => 'error'
             ]);

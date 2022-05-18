@@ -4,14 +4,14 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Edit Video</h1>
+            <h1>Edit Banner</h1>
         </div>
 
         <div class="section-body">
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-video"></i> Edit Video</h4>
+                    <h4><i class="fas fa-file-image"></i> Edit Banner</h4>
                 </div>
 
                 <div class="card-body">
@@ -24,13 +24,20 @@
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Kolom</label>
+                                        <label class="input-group-text" for="inputGroupSelect01">Posisi</label>
                                     </div>
-                                    <select class="custom-select" id="inputGroupSelect01" name="kolom" id="kolom">
-                                        <option value="{{$banner->kolom}}">{{$banner->kolom}}</option>
+                                    <select class="custom-select" id="inputGroupSelect01" name="posisi" id="posisi">
+                                        <option value="">-- PILIH POSISI --</option>
+                                @foreach ($banners as $b)
+                                    @if($banner->position == $b)
+                                        <option value="{{ $banner->position  }}" selected>{{ $banner->position }}</option>
+                                    @else
+                                        <option value="{{ $b }}">{{ $b }}</option>
+                                    @endif
+                                @endforeach
                                     </select>
                                 </div>
-                                @error('kolom')
+                                @error('posisi')
                                 <div class="invalid-feedback" style="display: block">
                                     {{ $message }}
                                 </div>
@@ -61,8 +68,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                            <button type="submit" class="btn btn-primary"
-                                onClick="return confirm('Ubah Data ?')">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <a class="btn btn-light" href="{{ route('admin.banner.index') }}">Cancel</a>
                         </div>
 

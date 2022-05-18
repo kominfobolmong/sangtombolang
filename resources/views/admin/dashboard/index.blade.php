@@ -18,7 +18,7 @@
                     <h4>BERITA</h4>
                   </div>
                   <div class="card-body">
-                    {{ App\Models\Post::count() ?? '0' }}
+                    {{ App\Models\News::count() ?? '0' }}
                   </div>
                 </div>
               </div>
