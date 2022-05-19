@@ -37,6 +37,7 @@
                             <thead>
                             <tr>
                                 <th scope="col" style="text-align: center;width: 6%">NO.</th>
+                                <th scope="col">GAMBAR</th>
                                 <th scope="col">JUDUL</th>
                                 <th scope="col">AUTHOR</th>
                                 <th scope="col">KATEGORI</th>
@@ -48,6 +49,7 @@
                             @foreach ($news as $no => $n)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($news->currentPage()-1) * $news->perPage() }}</th>
+                                    <td><img src="{{ $n->image }}" style="max-height: 50px" alt=""></td>
                                     <td>{{ $n->title }}</td>
                                     <td>{{ $n->user->name }}</td>
                                     <td>{{ $n->category->name }}</td>

@@ -19,6 +19,7 @@ use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\News;
 
 class PageController extends Controller
 {
@@ -36,21 +37,20 @@ class PageController extends Controller
         //     'posts','events','sliders','leaders','services',
         //     'banners1','banners2','banners3','visimisi'));
         
-        $kecamatan = Instansi::where('kategori','kecamatan')->get();
-        $badan = Instansi::where('kategori','badandaerah')->get();
-        $dinasdetails = Instansi::where('kategori','dinas')->get();
-        $posts = Post::with('tags')->take(3)->latest()->get();
+        // $kecamatan = Instansi::where('kategori','kecamatan')->get();
+        // $badan = Instansi::where('kategori','badandaerah')->get();
+        // $dinasdetails = Instansi::where('kategori','dinas')->get();
+        $posts = News::with('tags')->take(3)->latest()->get();
         $events = Event::take(3)->latest()->get();
         $sliders = Slider::latest()->get();
-        $leaders = Leader::latest()->Paginate(3);
+        // $leaders = Leader::latest()->Paginate(3);
         $services = Service::all();
-        $banners1 = Banner::where('kolom', 'kolom1')->get();
-        $banners2 = Banner::where('kolom', 'kolom2')->get();
-        $banners3 = Banner::where('kolom', 'kolom3')->get();
-        $visimisi = Statik::where('halaman', 'visimisi')->get();
-        return view('bolmongkab/index',compact(
-            'posts','events','sliders','leaders','services',
-            'banners1','banners2','banners3','visimisi','dinasdetails','kecamatan','badan'));
+        // $banners1 = Banner::where('kolom', 'kolom1')->get();
+        // $banners2 = Banner::where('kolom', 'kolom2')->get();
+        // $banners3 = Banner::where('kolom', 'kolom3')->get();
+        // $visimisi = Statik::where('halaman', 'visimisi')->get();
+        return view('lolak/index',compact(
+            'posts','events','sliders','services'));
     }
 
     public function eventDetail(Request $request, $id){
