@@ -1867,3 +1867,18 @@ section {
     max-width: 1640px;
 }
 }
+
+/* TAMBAHAN */
+.recent-blog-posts .post-box .post-title-recent {
+  font-size: 24px;
+  color: var(--color-secondary);
+  font-weight: 700;
+  margin: 15px 0 0 0;
+  position: relative;
+  transition: 0.3s;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
