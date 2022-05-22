@@ -14,12 +14,6 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //permission for posts
-        Permission::create(['name' => 'posts.index']);
-        Permission::create(['name' => 'posts.create']);
-        Permission::create(['name' => 'posts.edit']);
-        Permission::create(['name' => 'posts.delete']);
-
         //permission for news
         Permission::create(['name' => 'news.index']);
         Permission::create(['name' => 'news.create']);
@@ -55,11 +49,11 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'videos.edit']);
         Permission::create(['name' => 'videos.delete']);
 
-        //permission for downloads
-        Permission::create(['name' => 'downloads.index']);
-        Permission::create(['name' => 'downloads.create']);
-        Permission::create(['name' => 'downloads.edit']);
-        Permission::create(['name' => 'downloads.delete']);
+        //permission for files
+        Permission::create(['name' => 'files.index']);
+        Permission::create(['name' => 'files.create']);
+        Permission::create(['name' => 'files.edit']);
+        Permission::create(['name' => 'files.delete']);
 
         //permission for banners
         Permission::create(['name' => 'banners.index']);

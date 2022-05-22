@@ -15,4 +15,9 @@ class File extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getImageAttribute($file)
+    {
+        return asset('storage/files/' . $file);
+    }
 }

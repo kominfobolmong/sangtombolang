@@ -102,9 +102,9 @@
                         <span>Banner</span></a></li>
                         @endcan
 
-                        @can('downloads.index')
-                            <li class="{{ setActive('admin/download') }}"><a class="nav-link" href="{{ route('admin.admin-download.index') }}"><i class="fas fa-file-image"></i>
-                        <span>Download</span></a></li>
+                        @can('files.index')
+                            <li class="{{ setActive('admin/file') }}"><a class="nav-link" href="{{ route('admin.file.index') }}"><i class="fas fa-file-image"></i>
+                        <span>Files</span></a></li>
                         @endcan
 
                         @if(auth()->user()->can('photos.index') || auth()->user()->can('videos.index'))

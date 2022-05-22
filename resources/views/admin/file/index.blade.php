@@ -4,27 +4,27 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Halaman</h1>
+            <h1>File</h1>
         </div>
 
         <div class="section-body">
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-video"></i> Halaman</h4>
+                    <h4><i class="fas fa-file-image"></i> File</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.statik.index') }}" method="GET">
+                    <form action="{{ route('admin.file.index') }}" method="GET">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                @can('downloads.create')
+                                @can('files.create')
                                 <div class="input-group-prepend">
-                                    <a href="{{ route('admin.admin-download.create') }}" class="btn btn-primary"
+                                    <a href="{{ route('admin.file.create') }}" class="btn btn-primary"
                                         style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
                                 </div>
                                 @endcan
-                                <input type="text" class="form-control" name="q" placeholder="cari berdasarkan nama">
+                                <input type="text" class="form-control" name="q" placeholder="cari berdasarkan judul">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
                                     </button>
@@ -37,27 +37,31 @@
                             <thead>
                                 <tr>
                                     <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                    <th scope="col">NAMA</th>
-                                    <th scope="col">FILE</th>
+                                    <th scope="col">JUDUL</th>
+                                    <th scope="col">DATA</th>
+                                    <th scope="col">DOWNLOAD</th>
                                     <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($downloads as $no => $download)
+                                @foreach ($files as $no => $file)
                                 <tr>
                                     <th scope="row" style="text-align: center">
-                                        {{ ++$no + ($downloads->currentPage()-1) * $downloads->perPage() }}</th>
-                                    <td>{{ $download->nama }}</td>
-                                    <td class="text-center"><img src="/public/download-files/{{ $download->file }}" style="width: 100%"></td>
+                                        {{ ++$no + ($files->currentPage()-1) * $files->perPage() }}</th>
+                                    <td>{{ $file->title }}</td>
                                     <td class="text-center">
-                                    @can('downloads.edit')
-                                            <a href="{{ route('admin.admin-download.edit', $download->id) }}" class="btn btn-sm btn-primary">
+                                        <img src='/public/download-files/{{ $file->data }}' />
+                                        </td>
+                                    <td>{{ $file->download }}</td>
+                                    <td class="text-center">
+                                    @can('files.edit')
+                                            <a href="{{ route('admin.file.edit', $file->id) }}" class="btn btn-sm btn-primary">
                                                 <i class="fa fa-pencil-alt"></i>
                                             </a>
                                         @endcan
 
-                                        @can('downloads.delete')
-                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $download->id }}">
+                                        @can('files.delete')
+                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $file->id }}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         @endcan
@@ -67,7 +71,7 @@
                             </tbody>
                         </table>
                         <div style="text-align: center">
-                            {{$downloads->links("vendor.pagination.bootstrap-4")}}
+                            {{$files->links("vendor.pagination.bootstrap-4")}}
                         </div>
                     </div>
                 </div>
@@ -99,7 +103,7 @@
 
                     //ajax delete
                     jQuery.ajax({
-                        url: "{{ route("admin.admin-download.index") }}/"+id,
+                        url: "{{ route("admin.file.index") }}/"+id,
                         data:     {
                             "id": id,
                             "_token": token

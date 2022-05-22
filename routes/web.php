@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/news', App\Http\Controllers\Admin\NewsController::class, ['except' => 'show', 'as' => 'admin']);
 
         //download
-        Route::resource('/admin-download', App\Http\Controllers\Admin\DownloadController::class, ['except' => 'show', 'as' => 'admin']);
+        Route::resource('/file', App\Http\Controllers\Admin\FileController::class, ['except' => 'show', 'as' => 'admin']);
 
         //banners
         Route::resource('/banner', App\Http\Controllers\Admin\BannerController::class, ['except' => 'show', 'as' => 'admin']);
