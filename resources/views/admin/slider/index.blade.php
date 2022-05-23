@@ -31,6 +31,17 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label>CAPTION</label>
+                                <input type="text" name="title" placeholder="Masukkan caption" class="form-control @error('title') is-invalid @enderror">
+
+                                @error('title')
+                                <div class="invalid-feedback" style="display: block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
                             <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-upload"></i> UPLOAD</button>
                             <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i> RESET</button>
 
@@ -53,6 +64,7 @@
                             <tr>
                                 <th scope="col" style="text-align: center;width: 6%">NO.</th>
                                 <th scope="col">FOTO</th>
+                                <th scope="col">CAPTION</th>
                                 <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                             </tr>
                             </thead>
@@ -60,7 +72,8 @@
                             @foreach ($sliders as $no => $slider)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($sliders->currentPage()-1) * $sliders->perPage() }}</th>
-                                    <td class="text-center"><img src="{{ $slider->image }}" style="width: 300px"></td>
+                                    <td><img src="{{ $slider->image }}" style="width: 200px"></td>
+                                    <td>{{ $slider->title }}</td>
                                     <td class="text-center">
                                         @can('sliders.delete')
                                             <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $slider->id }}">

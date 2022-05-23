@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
-{    
+{
     /**
      * __construct
      *
@@ -16,7 +16,7 @@ class SliderController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['permission:slider.index|sliders.create|sliders.delete']);
+        $this->middleware(['permission:sliders.index|sliders.create|sliders.delete']);
     }
 
     /**
@@ -26,8 +26,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::latest()->when(request()->q, function($sliders) {
-            $sliders = $sliders->where('title', 'like', '%'. request()->q . '%');
+        $sliders = Slider::latest()->when(request()->q, function ($sliders) {
+            $sliders = $sliders->where('title', 'like', '%' . request()->q . '%');
         })->paginate(10);
 
         return view('admin.slider.index', compact('sliders'));
@@ -42,7 +42,7 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image'     => 'required|image',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
         //upload image
@@ -50,13 +50,14 @@ class SliderController extends Controller
         $image->storeAs('public/sliders', $image->hashName());
 
         $slider = Slider::create([
-            'image'     => $image->hashName(),
+            'image' => $image->hashName(),
+            'title' => $request->input('title')
         ]);
 
-        if($slider){
+        if ($slider) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.slider.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.slider.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -71,14 +72,14 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $slider = Slider::findOrFail($id);
-        $image = Storage::disk('local')->delete('public/sliders/'.$slider->image);
+        $image = Storage::disk('local')->delete('public/sliders/' . $slider->image);
         $slider->delete();
 
-        if($slider){
+        if ($slider) {
             return response()->json([
                 'status' => 'success'
             ]);
-        }else{
+        } else {
             return response()->json([
                 'status' => 'error'
             ]);
