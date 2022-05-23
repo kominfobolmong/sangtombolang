@@ -2,7 +2,7 @@
 
 <div class="logoheader d-flex align-items-center ">
   <img src="../assets-front/img/logobolmong.png" alt="">
-  <h1 class="logo"><a href="{{ ('/') }}">PEMERINTAH KABUPATEN <br> BOLAANG MONGONDOW</a></h1>
+  <h1 class="logo"><a href="{{ ('/') }}">PEMERINTAH KECAMATAN <br> LOLAK</a></h1>
 </div>
 
 
