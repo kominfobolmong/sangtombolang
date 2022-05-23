@@ -27,8 +27,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::latest()->when(request()->q, function($photos) {
-            $photos = $photos->where('title', 'like', '%'. request()->q . '%');
+        $photos = Photo::latest()->when(request()->q, function ($photos) {
+            $photos = $photos->where('caption', 'like', '%' . request()->q . '%');
         })->paginate(10);
 
         return view('admin.photo.index', compact('photos'));
@@ -42,26 +42,24 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'caption'=>'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $this->validate($request, [
+            'caption' => 'required',
+            'image'   => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
-  
-        $input = $request->all();
-  
-        if ($image = $request->file('image')) {
-            $destinationPath = 'public/photo-images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
-    
-        Photo::create($input);
 
-        if($input){
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs('public/photo-images', $image->hashName());
+
+        $photo = Photo::create([
+            'image'   => $image->hashName(),
+            'caption' => $request->input('caption'),
+        ]);
+
+        if ($photo) {
             //redirect dengan pesan sukses
             return redirect()->route('admin.photo.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('admin.photo.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -76,16 +74,15 @@ class PhotoController extends Controller
     public function destroy($id)
     {
         $photo = Photo::findOrFail($id);
-        // File::delete('public/photo-images/'.$photo->image);
-        unlink('public/photo-images/'.$photo->image);
-        // $image = Storage::disk('local')->delete('public/photos/'.$photo->image);
+        // unlink('public/photo-images/' . $photo->image);
+        Storage::disk('local')->delete('public/photo-images/' . $photo->image);
         $photo->delete();
 
-        if($photo){
+        if ($photo) {
             return response()->json([
                 'status' => 'success'
             ]);
-        }else{
+        } else {
             return response()->json([
                 'status' => 'error'
             ]);

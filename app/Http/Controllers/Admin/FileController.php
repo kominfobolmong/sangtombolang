@@ -155,6 +155,7 @@ class FileController extends Controller
     public function destroy($id)
     {
         $download = File::findOrFail($id);
+        unlink('public/download-files/' . $download->data);
         $file = Storage::disk('local')->delete('public/download-files/' . $download->data);
         $download->delete();
 
