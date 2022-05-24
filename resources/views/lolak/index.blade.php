@@ -66,7 +66,7 @@
                 <span class="post-author"> / Julia Parker</span>
               </div>
               <h3 class="post-title-recent">{{ $post->title }}</h3>
-              <p>{!! nl2br(e($post->body)) !!}</p>
+              <p class="recent-blog-body">{!! nl2br(e($post->body)) !!}</p>
               <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>

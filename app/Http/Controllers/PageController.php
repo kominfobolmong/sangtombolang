@@ -134,13 +134,13 @@ class PageController extends Controller
         return view('bolmongkab/detail/desa',compact('desa'));
     }
 
-    public function pengumuman(Request $request) {
+    public function berita(Request $request) {
         $kategori = Category::latest()->get();
-        $posts = Post::latest()->Paginate(5);
-        $sidebar = Post::skip(5)->Paginate(5);
+        $posts = News::latest()->Paginate(5);
+        $sidebar = News::skip(5)->Paginate(5);
         $tags = Tag::get();
         
-        return view('bolmongkab/detail/pengumuman',compact('posts','kategori','sidebar','tags'));
+        return view('lolak/detail/berita',compact('posts','kategori','sidebar','tags'));
     }
     
     public function pengumumanDetail(Request $request, $id){
