@@ -90,7 +90,7 @@ class PageController extends Controller
 
     public function event(){
         $events = Event::latest()->paginate(5);
-        return view('bolmongkab/detail/agenda',compact('events'));
+        return view('lolak/detail/agenda',compact('events'));
     }
 
     public function download(){
