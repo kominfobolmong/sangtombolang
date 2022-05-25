@@ -98,7 +98,7 @@
                         @endcan
 
                         @can('banners.index')
-                            <li class="{{ setActive('admin/banner') }}"><a class="nav-link" href="{{ route('admin.banner.index') }}"><i class="fas fa-file-image"></i>
+                            <li class="{{ setActive('admin/banner') }}"><a class="nav-link" href="{{ route('admin.banner.index') }}"><i class="fas fa-image"></i>
                         <span>Banner</span></a></li>
                         @endcan
 
@@ -129,6 +129,11 @@
                         @can('sliders.index')
                             <li class="{{ setActive('admin/slider') }}"><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-laptop"></i>
                         <span>Sliders</span></a></li>
+                        @endcan
+
+                        @can('profile.index')
+                        <li class="{{ setActive('admin/profile') }}"><a class="nav-link" href="{{ route('admin.profile.index') }}"><i class="fas fa-user"></i>
+                        <span>Profil</span></a></li>
                         @endcan
 
                         <li

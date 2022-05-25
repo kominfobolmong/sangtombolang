@@ -86,5 +86,41 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'users.create']);
         Permission::create(['name' => 'users.edit']);
         Permission::create(['name' => 'users.delete']);
+
+        //permission for profile
+        Permission::create(['name' => 'profile.index']);
+        Permission::create(['name' => 'profile.create']);
+        Permission::create(['name' => 'profile.edit']);
+        Permission::create(['name' => 'profile.delete']);
+
+        //permission for contact
+        Permission::create(['name' => 'contact.index']);
+        Permission::create(['name' => 'contact.create']);
+        Permission::create(['name' => 'contact.edit']);
+        Permission::create(['name' => 'contact.delete']);
+
+        //permission for link
+        Permission::create(['name' => 'link.index']);
+        Permission::create(['name' => 'link.create']);
+        Permission::create(['name' => 'link.edit']);
+        Permission::create(['name' => 'link.delete']);
+
+        //permission for sosmed
+        Permission::create(['name' => 'sosmed.index']);
+        Permission::create(['name' => 'sosmed.create']);
+        Permission::create(['name' => 'sosmed.edit']);
+        Permission::create(['name' => 'sosmed.delete']);
+
+        //permission for visitor
+        // Permission::create(['name' => 'visitor.index']);
+        // Permission::create(['name' => 'visitor.create']);
+        // Permission::create(['name' => 'visitor.edit']);
+        // Permission::create(['name' => 'visitor.delete']);
+
+        //permission for potensi
+        Permission::create(['name' => 'potensi.index']);
+        Permission::create(['name' => 'potensi.create']);
+        Permission::create(['name' => 'potensi.edit']);
+        Permission::create(['name' => 'potensi.delete']);
     }
 }

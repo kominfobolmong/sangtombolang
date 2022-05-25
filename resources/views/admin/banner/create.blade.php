@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-file-image"></i> Tambah Banner</h4>
+                    <h4><i class="fas fa-image"></i> Tambah Banner</h4>
                 </div>
 
                 <div class="card-body">
