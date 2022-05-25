@@ -55,6 +55,11 @@
 
       <div class="container" data-aos="fade-up">
 
+        <div class="section-title">
+          <h2><i class="bi bi-newspaper"></i></h2>
+          <p>Berita terbaru</p>
+        </div>
+
         <div class="row">
 
           @foreach ($posts as $post)
@@ -62,11 +67,11 @@
             <div class="post-box">
               <div class="post-img"><img src="{{ $post->image}}" class="img-fluid" alt=""></div>
               <div class="meta">
-                <span class="post-date">Tue, December 12</span>
-                <span class="post-author"> / Julia Parker</span>
+                <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}2</span>
+                <span class="post-author"> / {{ $post->user->name }}</span>
               </div>
               <h3 class="post-title-recent">{{ $post->title }}</h3>
-              <p>{!! nl2br(e($post->body)) !!}</p>
+              <p class="recent-blog-body">{!! nl2br(e($post->body)) !!}</p>
               <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
