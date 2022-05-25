@@ -37,7 +37,7 @@
 
           <div class="col-lg-8 entries">
 
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
             <article class="entry">
 
               <div class="entry-img">
@@ -45,7 +45,7 @@
               </div>
 
               <h2 class="entry-title">
-                <a class="recent-blog-body" href="{{ route('berita-detail',$post->id) }}">{{ $post->title }}</a>
+                <a class="recent-blog-body" href="blog-single.html">{{ $post->title }}</a>
               </h2>
 
               <div class="entry-meta">
@@ -57,21 +57,26 @@
 
               <div class="entry-content">
                 <p class="recent-blog-body">
-                  {!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}
+                  {!! nl2br(($post->body)) !!}
                 </p>
                 <div class="read-more">
-                  <a href="{{ route('berita-detail',$post->id) }}">Read More</a>
+                  <a href="blog-single.html">Read More</a>
                 </div>
               </div>
 
             </article><!-- End blog entry -->
-            @endforeach
 
-            <div class="blog-pagination">
+            @empty
+
+            <p>Berita Tidak Ditemukan</p>
+
+            @endforelse
+
+            {{-- <div class="blog-pagination">
               <ul class="justify-content-center">
                 {!! $posts->links('layouts.pagination') !!}
               </ul>
-            </div>
+            </div> --}}
 
           </div><!-- End blog entries list -->
 
@@ -82,8 +87,8 @@
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="{{ ('/berita-cari') }}" method="GET">
-                  <input style="border: none;" type="text" name="cari" value="{{ request()->get('cari') }}">
-                  <button type="submit"><i class="bi bi-search"></i></button>
+                    <input style="border: none;" type="text" name="cari" value="{{ request()->get('cari') }}">
+                    <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn-->
 
@@ -91,7 +96,7 @@
               <div class="sidebar-item categories">
                 <ul>
                   @foreach ($kategori as $cat)
-                  <li><a href="{{ route('cari-kategori', $cat->id) }}">{{ $cat->name }} <span>({{ $cat->news->count() }})</span></a></li>
+                  <li><a href="#">{{ $cat->name }} <span>({{ $cat->news->count() }})</span></a></li>
                   @endforeach
                 </ul>
               </div><!-- End sidebar categories-->
@@ -101,8 +106,8 @@
                 @foreach ($sidebar as $side)
                 <div class="post-item clearfix">
                   <img src="{{$side->image}}" alt="">
-                  <h4 class="recent-blog-body"><a href="{{ route('berita-detail',$side->id) }}">{{$side->title}}</a></h4>
-                  <time datetime="2020-01-01">{{ \Carbon\Carbon::parse($side->created_at)->diffForhumans() }}</time>
+                  <h4 class="recent-blog-body"><a href="blog-single.html">{{$side->title}}</a></h4>
+                  <time datetime="2020-01-01">{{$side->created_at}}</time>
                 </div>
                 @endforeach
               </div><!-- End sidebar recent posts-->
