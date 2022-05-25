@@ -67,11 +67,11 @@
             <div class="post-box">
               <div class="post-img"><img src="{{ $post->image}}" class="img-fluid" alt=""></div>
               <div class="meta">
-                <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}2</span>
+                <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}</span>
                 <span class="post-author"> / {{ $post->user->name }}</span>
               </div>
               <h3 class="post-title-recent">{{ $post->title }}</h3>
-              <p class="recent-blog-body">{!! nl2br(e($post->body)) !!}</p>
+              <p class="recent-blog-body">{!! \Illuminate\Support\Str::limit(nl2br(($post->body))),200,'...' !!}</p>
               <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -95,6 +95,25 @@
 
     <!-- Vendor JS Files -->
     @include('lolak.layout.script')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js"></script>
+    <script>
+        var editor_config = {
+            selector: "p.body",
+            plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor colorpicker textpattern"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+            relative_urls: false,
+            forced_root_block : false,
+        };
+
+        tinymce.init(editor_config);
+
+    </script>
 
 </body>
 

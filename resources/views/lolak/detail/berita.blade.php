@@ -57,7 +57,7 @@
 
               <div class="entry-content">
                 <p class="recent-blog-body">
-                  {{ $post->body }}
+                  {!! nl2br(($post->body)) !!}
                 </p>
                 <div class="read-more">
                   <a href="blog-single.html">Read More</a>
