@@ -19,12 +19,12 @@
                         @csrf
 
                         <div class="form-group">
-                            <label>JUDUL BERITA</label>
-                            <input type="text" name="title" value="{{ old('title') }}"
-                                placeholder="Masukkan Judul Berita"
-                                class="form-control @error('title') is-invalid @enderror">
+                            <label>NAMA KECAMATAN</label>
+                            <input type="text" name="nama" value="{{ old('nama') }}"
+                                placeholder="Masukkan Nama Kecamatan"
+                                class="form-control @error('nama') is-invalid @enderror">
 
-                            @error('title')
+                            @error('nama')
                             <div class="invalid-feedback" style="display: block">
                                 {{ $message }}
                             </div>
@@ -32,27 +32,10 @@
                         </div>
                         
                         <div class="form-group">
-                            <label>GAMBAR</label>
-                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                            <label>LOGO</label>
+                            <input type="file" name="logo" class="form-control @error('logo') is-invalid @enderror">
 
-                            @error('image')
-                            <div class="invalid-feedback" style="display: block">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>KATEGORI</label>
-                            <select class="form-control select-category @error('category_id') is-invalid @enderror"
-                                name="category_id">
-                                <option value="">-- PILIH KATEGORI --</option>
-                                @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
+                            @error('logo')
                             <div class="invalid-feedback" style="display: block">
                                 {{ $message }}
                             </div>
@@ -60,10 +43,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label>KONTEN</label>
-                            <textarea class="form-control content @error('body') is-invalid @enderror" name="body"
-                                placeholder="Masukkan Konten / Isi Berita" rows="10">{!! old('content') !!}</textarea>
-                            @error('body')
+                            <label>FAVICON</label>
+                            <input type="file" name="favicon" class="form-control @error('favicon') is-invalid @enderror">
+
+                            @error('favicon')
                             <div class="invalid-feedback" style="display: block">
                                 {{ $message }}
                             </div>
@@ -71,13 +54,54 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold">TAGS</label>
-                            <select class="form-control @error('body') is-invalid @enderror" name="tags[]" multiple="multiple">
-                                @foreach ($tags as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->name }} </option>
-                                @endforeach
-                            </select>
-                            @error('tags')
+                            <label>STRUKTUR ORGANISASI</label>
+                            <input type="file" name="struktur" class="form-control @error('struktur') is-invalid @enderror">
+
+                            @error('struktur')
+                            <div class="invalid-feedback" style="display: block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>VISI</label>
+                            <textarea class="form-control content @error('visi') is-invalid @enderror" name="visi"
+                                placeholder="Masukkan Visi" rows="10">{!! old('visi') !!}</textarea>
+                            @error('visi')
+                            <div class="invalid-feedback" style="display: block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>MISI</label>
+                            <textarea class="form-control content @error('misi') is-invalid @enderror" name="misi"
+                                placeholder="Masukkan Misi" rows="10">{!! old('misi') !!}</textarea>
+                            @error('misi')
+                            <div class="invalid-feedback" style="display: block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>DASAR HUKUM</label>
+                            <textarea class="form-control content @error('dasar_hukum') is-invalid @enderror" name="dasar_hukum"
+                                placeholder="Masukkan Dasar Hukum" rows="10">{!! old('dasar_hukum') !!}</textarea>
+                            @error('dasar_hukum')
+                            <div class="invalid-feedback" style="display: block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>SEJARAH</label>
+                            <textarea class="form-control content @error('sejarah') is-invalid @enderror" name="sejarah"
+                                placeholder="Masukkan Sejarah" rows="10">{!! old('sejarah') !!}</textarea>
+                            @error('sejarah')
                             <div class="invalid-feedback" style="display: block">
                                 {{ $message }}
                             </div>

@@ -21,7 +21,7 @@ class CreateProfilesTable extends Migration
             $table->text('visi')->nullable();
             $table->text('misi')->nullable();
             $table->string('struktur_organisasi')->nullable();
-            $table->string('logo')->nullable();
+            $table->string('logo');
             $table->string('favicon')->nullable();
             $table->timestamps();
         });

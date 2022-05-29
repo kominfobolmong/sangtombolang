@@ -89,6 +89,7 @@ class PermissionsTableSeeder extends Seeder
 
         //permission for profile
         Permission::create(['name' => 'profile.index']);
+        Permission::create(['name' => 'profile.show']);
         Permission::create(['name' => 'profile.create']);
         Permission::create(['name' => 'profile.edit']);
         Permission::create(['name' => 'profile.delete']);

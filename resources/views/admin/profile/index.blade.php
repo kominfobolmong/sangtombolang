@@ -23,12 +23,6 @@
                                         <a href="{{ route('admin.profile.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
                                     </div>
                                 @endcan
-                                <input type="text" class="form-control" name="q"
-                                       placeholder="cari berdasarkan nama">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </form>
@@ -37,32 +31,42 @@
                             <thead>
                             <tr>
                                 <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                <th scope="col">NAMA</th>
+                                <th scope="col">NAMA KECAMATAN</th>
                                 <th scope="col">LOGO</th>
                                 <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($profiles as $no => $profile)
+                            @forelse ($profiles as $profile)
                                 <tr>
-                                    <th scope="row" style="text-align: center">{{ ++$no + ($profiles->currentPage()-1) * $profiles->perPage() }}</th>
+                                    <td>{{ $profiles->count() * ($profiles->currentPage() - 1) + $loop->iteration }}</td>
                                     <td>{{ $profile->nama_kecamatan }}</td>
-                                    <td><img src="{{ $profile->logo }}" style="max-height: 50px" alt="logo"></td>
+                                    <td>
+                                        @if(Storage::disk('public')->exists($profile->logo ?? null))
+
+                                        <img src="{{ Storage::url($profile->logo ?? null) }}" width="100px" alt="Logo Kecamatan" />
+                                        @endif
+                                    </td>
                                     <td class="text-center">
+                                        
+                                        @can('profile.delete')
+                                        <button onClick="Delete(this.id)" class="btn btn-sm btn-primary" id="{{ $profile->id }}">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                        @endcan
+
                                         @can('profile.edit')
-                                            <a href="{{ route('admin.profile.edit', $profile->id) }}" class="btn btn-sm btn-primary">
+                                            <a href="{{ route('admin.profile.edit', $profile->id) }}" class="btn btn-sm btn-warning">
                                                 <i class="fa fa-pencil-alt"></i>
                                             </a>
                                         @endcan
-
-                                        @can('profile.delete')
-                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $profile->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="4">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">
