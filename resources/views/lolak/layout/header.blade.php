@@ -7,7 +7,12 @@
   <nav id="navbar" class="navbar">
     <ul>
       <li><a href="{{ ('/') }}" class="active">Home</a></li>
-
+      <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          <li class="{{ (request()->is('visi-misi')) ? 'active' : '' }}"><a href="{{ ('/visi-misi') }}">Visi & Misi</a></li>
+          <li class="{{ (request()->is('potensi')) ? 'active' : '' }}"><a href="{{ ('/potensi') }}">Potensi</a></li>
+        </ul>
+      </li>
       <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
         <ul>
           <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a href="{{ ('/event') }}">Agenda</a></li>

@@ -17,6 +17,7 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title');
+            // $table->string('slug')->unique();
             $table->text('body')->nullable();
             $table->string('data');
             $table->integer('download')->default(0);

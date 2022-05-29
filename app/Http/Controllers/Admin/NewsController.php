@@ -74,7 +74,7 @@ class NewsController extends Controller
         $news = News::create([
             'image'       => $image->hashName(),
             'title'       => $request->input('title'),
-            'slug'        => Str::slug($request->input('title'), '-'),
+            'slug'        => strtolower(Str::slug($request->input('title') . '-' . time())),
             'category_id' => $request->input('category_id'),
             'user_id'     => $request->input('user_id'),
             'body'        => $request->input('body'),
@@ -147,7 +147,7 @@ class NewsController extends Controller
             $news->update([
                 'image'       => $image->hashName(),
                 'title'       => $request->input('title'),
-                'slug'        => Str::slug($request->input('title'), '-'),
+                'slug'        => strtolower(Str::slug($request->input('title') . '-' . time())),
                 'category_id' => $request->input('category_id'),
                 'user_id'     => $request->input('user_id'),
                 'body'        => $request->input('body')

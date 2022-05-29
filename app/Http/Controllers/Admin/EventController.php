@@ -52,7 +52,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'     => 'required',
+            'title'     => 'required|unique:events,title',
             'content'   => 'required',
             'location'  => 'required',
             'date'      => 'required'
@@ -60,7 +60,7 @@ class EventController extends Controller
 
         $event = Event::create([
             'title'     => $request->input('title'),
-            'slug'      => Str::slug($request->input('title'), '-'),
+            'slug'      => strtolower(Str::slug($request->input('title') . '-' . time())),
             'content'   => $request->input('content'),
             'location'  => $request->input('location'),
             'date'      => $request->input('date')
@@ -96,16 +96,16 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $this->validate($request, [
-            'title'     => 'required',
-            'content'   => 'required',
-            'location'  => 'required',
-            'date'      => 'required'
+            'title'    => 'required|unique:events,title,' . $event->id,
+            'content'  => 'required',
+            'location' => 'required',
+            'date'     => 'required'
         ]);
 
         $event = Event::findOrFail($event->id);
         $event->update([
             'title'     => $request->input('title'),
-            'slug'      => Str::slug($request->input('title'), '-'),
+            'slug'      => strtolower(Str::slug($request->input('title') . '-' . time())),
             'content'   => $request->input('content'),
             'location'  => $request->input('location'),
             'date'      => $request->input('date')

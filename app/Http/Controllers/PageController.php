@@ -160,6 +160,38 @@ class PageController extends Controller
 
     }
 
+    public function beritaDetail(Request $request, $id){
+        if($request->has('cari')){
+            $kategori = Category::latest()->get();
+            $tags = Tag::latest()->get();
+            $sidebar = News::skip(5)->Paginate(5);
+            $posts = News::where('title','LIKE','%'.$request->cari.'%')->with('kategori')->get();
+            return view('lolak/detail/berita',compact('posts','kategori','sidebar','tags'));
+        } else {
+            $kategori = Category::latest()->simplePaginate(5);
+            $posts = News::where('id', $id)->firstOrFail();
+            $tags = Tag::latest()->get();
+            $sidebar = News::skip(5)->Paginate(5);
+            return view('lolak/detail/berita-detail',compact('posts','sidebar','kategori','tags'));
+        }
+
+    }
+
+    public function hascarberita(Request $request) {
+        if($request->has('cari')){
+            $kategori = Category::latest()->get();
+            $tags = Tag::latest()->get();
+            $sidebar = News::skip(5)->Paginate(5);
+            $posts = News::where('title','LIKE','%'.$request->cari.'%')->get();
+        } else {
+            $kategori = Category::latest()->simplePaginate(5);
+            $posts = News::where('id', $id)->firstOrFail();
+            $tags = Tag::latest()->get();
+            $sidebar = News::skip(5)->Paginate(5);
+        }
+        return view('lolak/detail/hascarberita',compact('posts','kategori','sidebar','tags'));
+    }
+
     public function hascarpengumuman(Request $request) {
         if($request->has('cari')){
             $kategori = Category::latest()->get();
@@ -179,10 +211,10 @@ class PageController extends Controller
        
             $kategori = Category::latest()->get();
             $tags = Tag::latest()->get();
-            $sidebar = Post::skip(5)->Paginate(5);
-            $posts = $category->posts()->latest()->paginate(4);
+            $sidebar = News::skip(5)->Paginate(5);
+            $posts = $category->news()->latest()->paginate(4);
 
-        return view('bolmongkab/detail/pengumuman',compact('posts','kategori','sidebar','tags'));
+        return view('lolak/detail/berita',compact('posts','kategori','sidebar','tags'));
     }
 
     public function tag(Tag $tag) {

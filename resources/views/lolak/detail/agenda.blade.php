@@ -42,7 +42,7 @@
               <div class="member-info">
                 <h4>{{$event->title}}</h4>
                 <span>{{$event->location}} - {{$event->date}}</span>
-                <p>{{$event->content}}</p>
+                <p>{!! nl2br($event->content)!!}</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>

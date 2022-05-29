@@ -71,8 +71,8 @@
                 <span class="post-author"> / {{ $post->user->name }}</span>
               </div>
               <h3 class="post-title-recent">{{ $post->title }}</h3>
-              <p class="recent-blog-body">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200, '...') !!}</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <p class="recent-blog-body">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
+              <a href="{{ route('berita-detail',$post->id) }}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
           @endforeach

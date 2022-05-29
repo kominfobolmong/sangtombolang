@@ -14,6 +14,8 @@ Route::get('/sejarah', [App\Http\Controllers\PageController::class, 'sejarah']);
 Route::get('/event', [App\Http\Controllers\PageController::class, 'event']);
 Route::get('/event-detail/{events:id}', [App\Http\Controllers\PageController::class, 'eventDetail']);
 Route::get('/berita', [App\Http\Controllers\PageController::class, 'berita']);
+route::get('/berita-detail/{berita:id}', [App\Http\Controllers\PageController::class, 'beritaDetail'])->name('berita-detail');
+route::get('/berita-cari', [App\Http\Controllers\Pagecontroller::class, 'hascarberita']);
 Route::get('/dinas', [App\Http\Controllers\PageController::class, 'dinas']);
 Route::get('/kecamatan', [App\Http\Controllers\PageController::class, 'kecamatan']);
 Route::get('/badandaerah', [App\Http\Controllers\PageController::class, 'badandaerah']);

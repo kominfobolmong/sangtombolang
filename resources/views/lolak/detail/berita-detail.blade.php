@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  @include('lolak.layout.head')
+    @include('lolak.layout.head')
 </head>
 
 <body>
@@ -19,17 +19,18 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Berita</h2>
+          <h2>Berita Detail</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Berita</li>
+            <li><a href="blog.html">Berita</a></li>
+            <li>Berita Detail</li>
           </ol>
         </div>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Section ======= -->
+    <!-- ======= Blog Single Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
@@ -37,41 +38,44 @@
 
           <div class="col-lg-8 entries">
 
-            @foreach ($posts as $post)
-            <article class="entry">
+            <article class="entry entry-single">
 
               <div class="entry-img">
-                <img src="{{ $post->image}}" alt="" class="img-fluid">
+                <img src="{{$posts->image}}" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a class="recent-blog-body" href="{{ route('berita-detail',$post->id) }}">{{ $post->title }}</a>
+                <a href="{{ route('berita-detail',$posts->id) }}">{{$posts->title}}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ $post->user->name }}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{$posts->user->name}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="$posts->created_at">{{ \Carbon\Carbon::parse($posts->created_at)->diffForhumans() }}</time></a></li>
                 </ul>
               </div>
 
               <div class="entry-content">
-                <p class="recent-blog-body">
-                  {!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}
+                <p>
+                    {!! nl2br(($posts->body)) !!}
                 </p>
-                <div class="read-more">
-                  <a href="{{ route('berita-detail',$post->id) }}">Read More</a>
-                </div>
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">{{$posts->category->name}}</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                    @foreach ($posts->tags as $tag)
+                    <li><a href="#">{{$tag->name}}</a></li>
+                    @endforeach
+                </ul>
               </div>
 
             </article><!-- End blog entry -->
-            @endforeach
-
-            <div class="blog-pagination">
-              <ul class="justify-content-center">
-                {!! $posts->links('layouts.pagination') !!}
-              </ul>
-            </div>
 
           </div><!-- End blog entries list -->
 
@@ -82,16 +86,16 @@
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="{{ ('/berita-cari') }}" method="GET">
-                  <input style="border: none;" type="text" name="cari" value="{{ request()->get('cari') }}">
-                  <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
+                    <input style="border: none;" type="text" name="cari" value="{{ request()->get('cari') }}">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                  </form>
               </div><!-- End sidebar search formn-->
 
               <h3 class="sidebar-title">Categories</h3>
               <div class="sidebar-item categories">
                 <ul>
                   @foreach ($kategori as $cat)
-                  <li><a href="{{ route('cari-kategori', $cat->id) }}">{{ $cat->name }} <span>({{ $cat->news->count() }})</span></a></li>
+                  <li><a href="#">{{ $cat->name }} <span>({{ $cat->news->count() }})</span></a></li>
                   @endforeach
                 </ul>
               </div><!-- End sidebar categories-->
@@ -102,7 +106,7 @@
                 <div class="post-item clearfix">
                   <img src="{{$side->image}}" alt="">
                   <h4 class="recent-blog-body"><a href="{{ route('berita-detail',$side->id) }}">{{$side->title}}</a></h4>
-                  <time datetime="2020-01-01">{{ \Carbon\Carbon::parse($side->created_at)->diffForhumans() }}</time>
+                  <time datetime="2020-01-01">{{$side->created_at}}</time>
                 </div>
                 @endforeach
               </div><!-- End sidebar recent posts-->
@@ -123,7 +127,7 @@
         </div>
 
       </div>
-    </section><!-- End Blog Section -->
+    </section><!-- End Blog Single Section -->
 
   </main><!-- End #main -->
 

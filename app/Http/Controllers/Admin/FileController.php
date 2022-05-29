@@ -53,7 +53,7 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:files,title',
             'data'  => 'required|file|mimes:pdf,docx,xlsx,doc,zip|max:200048',
         ]);
 
@@ -109,7 +109,7 @@ class FileController extends Controller
     public function update(Request $request, File $file)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|unique:files,title,' . $file->id,
             'data'  => 'file|mimes:pdf,docx,xlsx,doc,zip|max:200048',
         ]);
 
