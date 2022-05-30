@@ -141,6 +141,11 @@
                         <span>Profil</span></a></li>
                         @endcan
 
+                        @can('contact.index')
+                        <li class="{{ setActive('admin/contact') }}"><a class="nav-link" href="{{ route('admin.contact.index') }}"><i class="fas fa-phone"></i>
+                        <span>Contact</span></a></li>
+                        @endcan
+
                         <li
                             class="dropdown {{ setActive('admin/role'). setActive('admin/permission'). setActive('admin/user') }}">
                             @if(auth()->user()->can('roles.index') || auth()->user()->can('permission.index') || auth()->user()->can('users.index'))

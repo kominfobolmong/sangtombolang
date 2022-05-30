@@ -86,5 +86,7 @@ Route::prefix('admin')->group(function () {
 
         //potensi
         Route::resource('/potensi', App\Http\Controllers\Admin\PotensiController::class, ['except' => ['show'], 'as' => 'admin']);
+
+        Route::resource('/contact', App\Http\Controllers\Admin\ContactController::class, ['except' => ['show'], 'as' => 'admin']);
     });
 });
