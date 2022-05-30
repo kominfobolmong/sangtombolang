@@ -35,7 +35,7 @@
 
         <div class="row">
             
-        @foreach ($events as $event)
+        @forelse ($events as $event)
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
               {{-- <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div> --}}
@@ -52,7 +52,12 @@
               </div>
             </div>
           </div>
-        @endforeach
+
+          @empty
+
+          <p>Tidak Ada Agenda</p>
+
+          @endforelse
 
         </div>
 

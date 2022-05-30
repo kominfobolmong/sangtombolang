@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Http\View\Composers\ChanelsComposer;
-use View;
 
 use App\Models\Profile;
 
