@@ -4,12 +4,12 @@
 
           <div class="col-lg-3 col-md-6">
               <div class="footer-info">
-                  <h3>Sailor</h3>
+                  <h3>Pemerintah Kabupaten Bolaang Mongondow</h3>
                   <p>
-                      A108 Adam Street <br>
-                      NY 535022, USA<br><br>
-                      <strong>Phone:</strong> +1 5589 55488 55<br>
-                      <strong>Email:</strong> info@example.com<br>
+                    Lolak Tambolango, Lolak, Kabupaten Bolaang Mongondow, Sulawesi Utara
+                    Kode pos 95761, Bolaang Mongdong<br><br>
+                      <strong>Phone:</strong> -<br>
+                      <strong>Email:</strong>pemerintah@bolmongkab.go.id<br>
                   </p>
                   <div class="social-links mt-3">
                       <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -22,32 +22,30 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-              <h4>Useful Links</h4>
+              <h4>Profil Kecamatan</h4>
               <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Visi</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Misi</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Dasar Hukum</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Potensi</a></li>
               </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-              <h4>Our Services</h4>
+              <h4>Informasi</h4>
               <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Agenda</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Berita</a></li>
               </ul>
           </div>
 
+
           <div class="col-lg-4 col-md-6 footer-newsletter">
-              <h4>Our Newsletter</h4>
-              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-              <form action="" method="post">
-                  <input type="email" name="email"><input type="submit" value="Subscribe">
+              <h4>Cari Berita</h4>
+              <p>Cari berita disini</p>
+              <form action="{{ ('/berita-cari') }}" method="GET">
+                <input style="border: none; width: 86.5%" type="text" name="cari" value="{{ request()->get('cari') }}">
+                <input type="submit" value="Cari"><i class="bi bi-search"></i>
               </form>
 
           </div>
@@ -58,13 +56,9 @@
 
 <div class="container">
   <div class="copyright">
-      &copy; Copyright <strong><span>Sailor</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Diskominfo</span></strong>. All Rights Reserved
   </div>
   <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Support by <a href="#">E-Government</a>
   </div>
 </div>

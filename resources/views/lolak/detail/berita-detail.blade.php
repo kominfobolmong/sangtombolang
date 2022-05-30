@@ -83,7 +83,7 @@
 
             <div class="sidebar">
 
-              <h3 class="sidebar-title">Search</h3>
+              <h3 class="sidebar-title">Cari</h3>
               <div class="sidebar-item search-form">
                 <form action="{{ ('/berita-cari') }}" method="GET">
                     <input style="border: none;" type="text" name="cari" value="{{ request()->get('cari') }}">
@@ -91,7 +91,7 @@
                   </form>
               </div><!-- End sidebar search formn-->
 
-              <h3 class="sidebar-title">Categories</h3>
+              <h3 class="sidebar-title">Kategori</h3>
               <div class="sidebar-item categories">
                 <ul>
                   @foreach ($kategori as $cat)
@@ -100,7 +100,7 @@
                 </ul>
               </div><!-- End sidebar categories-->
 
-              <h3 class="sidebar-title">Recent Posts</h3>
+              <h3 class="sidebar-title">Berita Terbaru</h3>
               <div class="sidebar-item recent-posts">
                 @foreach ($sidebar as $side)
                 <div class="post-item clearfix">

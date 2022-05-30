@@ -24,10 +24,3 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets-kecamatan/css/style.css') }}" rel="stylesheet">
-
-<!-- =======================================================
-* Template Name: Sailor - v4.7.0
-* Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-======================================================== -->

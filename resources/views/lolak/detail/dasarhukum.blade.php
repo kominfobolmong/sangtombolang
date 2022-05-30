@@ -19,10 +19,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Agenda</h2>
+          <h2>Dasar Hukum</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Agenda</li>
+            <li>Dasar Hukum</li>
           </ol>
         </div>
 
@@ -32,35 +32,13 @@
     <!-- ======= Team Section ======= -->
     <section id="team" class="team ">
       <div class="container">
-
-        <div class="row">
-            
-        @forelse ($events as $event)
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <div class="member d-flex align-items-start">
-              {{-- <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div> --}}
               <div class="member-info">
-                <h4>{{$event->title}}</h4>
-                <span>{{$event->location}} - {{$event->date}}</span>
-                <p>{!! nl2br($event->content)!!}</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
+                <h4>Dasar Hukum</h4>
+                <p>{!! nl2br(($dasarhukum->dasar_hukum)) !!}</p>
               </div>
             </div>
-          </div>
-
-          @empty
-
-          <p>Tidak Ada Agenda</p>
-
-          @endforelse
-
-        </div>
-
       </div>
     </section><!-- End Team Section -->
 
