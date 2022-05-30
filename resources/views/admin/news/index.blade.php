@@ -46,7 +46,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($news as $no => $n)
+                            @forelse ($news as $no => $n)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($news->currentPage()-1) * $news->perPage() }}</th>
                                     <td><img src="{{ $n->image }}" style="max-height: 50px" alt=""></td>
@@ -68,7 +68,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="7">Empty</td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

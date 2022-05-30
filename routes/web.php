@@ -82,5 +82,8 @@ Route::prefix('admin')->group(function () {
 
         //profile
         Route::resource('/profile', App\Http\Controllers\Admin\ProfileController::class, ['except' => ['show'], 'as' => 'admin']);
+
+        //potensi
+        Route::resource('/potensi', App\Http\Controllers\Admin\PotensiController::class, ['except' => ['show'], 'as' => 'admin']);
     });
 });

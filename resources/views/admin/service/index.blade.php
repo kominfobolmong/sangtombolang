@@ -45,7 +45,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($services as $no => $service)
+                                @forelse ($services as $no => $service)
                                 <tr>
                                     <th scope="row" style="text-align: center">
                                         {{ ++$no + ($services->currentPage()-1) * $services->perPage() }}</th>
@@ -68,7 +68,11 @@
                                     </td>
 
                                 </tr>
-                                @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="6">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

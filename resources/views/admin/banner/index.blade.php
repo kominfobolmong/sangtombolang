@@ -44,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($banners as $no => $banner)
+                                @forelse ($banners as $no => $banner)
                                 <tr>
                                     <th scope="row" style="text-align: center">
                                         {{ ++$no + ($banners->currentPage()-1) * $banners->perPage() }}</th>
@@ -65,7 +65,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                                @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="5">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

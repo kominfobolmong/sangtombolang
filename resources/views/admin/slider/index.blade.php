@@ -69,7 +69,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($sliders as $no => $slider)
+                            @forelse ($sliders as $no => $slider)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($sliders->currentPage()-1) * $sliders->perPage() }}</th>
                                     <td><img src="{{ $slider->image }}" style="width: 200px"></td>
@@ -82,7 +82,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="4">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

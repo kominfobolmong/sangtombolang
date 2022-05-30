@@ -43,7 +43,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($videos as $no => $video)
+                            @forelse ($videos as $no => $video)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($videos->currentPage()-1) * $videos->perPage() }}</th>
                                     <td>{{ $video->title }}</td>
@@ -64,7 +64,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="4">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

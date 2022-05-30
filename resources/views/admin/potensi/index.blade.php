@@ -4,27 +4,27 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Kategori</h1>
+            <h1>Potensi</h1>
         </div>
 
         <div class="section-body">
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-folder"></i> Kategori</h4>
+                    <h4><i class="fas fa-bell"></i> Potensi</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.category.index') }}" method="GET">
+                    <form action="{{ route('admin.potensi.index') }}" method="GET">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                @can('categories.create')
+                                @can('potensi.create')
                                     <div class="input-group-prepend">
-                                        <a href="{{ route('admin.category.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
+                                        <a href="{{ route('admin.potensi.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
                                     </div>
                                 @endcan
                                 <input type="text" class="form-control" name="q"
-                                       placeholder="cari berdasarkan nama kategori">
+                                       placeholder="cari berdasarkan judul">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
                                     </button>
@@ -37,38 +37,47 @@
                             <thead>
                             <tr>
                                 <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                <th scope="col">NAMA KATEGORI</th>
+                                <th scope="col">JUDUL</th>
+                                <th scope="col">BODY</th>
+                                <th scope="col">IMAGE</th>
                                 <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse ($categories as $no => $category)
+                            @forelse ($potensis as $no => $potensi)
                                 <tr>
-                                    <th scope="row" style="text-align: center">{{ ++$no + ($categories->currentPage()-1) * $categories->perPage() }}</th>
-                                    <td>{{ $category->name }}</td>
+                                    <th scope="row" style="text-align: center">{{ ++$no + ($potensis->currentPage()-1) * $potensis->perPage() }}</th>
+                                    <td>{{ $potensi->title }}</td>
+                                    <td>{!! $potensi->body !!}</td>
+                                    <td>
+                                        @if(Storage::disk('public')->exists($potensi->image ?? null))
+
+                                        <img src="{{ Storage::url($potensi->image ?? null) }}" width="100px" alt="Image Potensi" />
+                                        @endif
+                                    </td>
                                     <td class="text-center">
-                                        @can('categories.edit')
-                                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-primary">
+                                        @can('potensi.edit')
+                                            <a href="{{ route('admin.potensi.edit', $potensi->id) }}" class="btn btn-sm btn-primary">
                                                 <i class="fa fa-pencil-alt"></i>
                                             </a>
                                         @endcan
-                                        
-                                        @can('categories.delete')
-                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $category->id }}">
+
+                                        @can('potensi.delete')
+                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $potensi->id }}">
                                                 <i class="fa fa-trash"></i>
-                                            </button>  
+                                            </button>
                                         @endcan
                                     </td>
                                 </tr>
                             @empty
                             <tr>
-                                <td colspan="3">Empty</td>
+                                <td colspan="5">Empty</td>
                             </tr>
                             @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">
-                            {{$categories->links("vendor.pagination.bootstrap-4")}}
+                            {{$potensis->links("vendor.pagination.bootstrap-4")}}
                         </div>
                     </div>
                 </div>
@@ -99,7 +108,7 @@
 
                     //ajax delete
                     jQuery.ajax({
-                        url: "{{ route("admin.category.index") }}/"+id,
+                        url: "{{ route("admin.potensi.index") }}/"+id,
                         data:     {
                             "id": id,
                             "_token": token
@@ -140,5 +149,4 @@
             })
         }
 </script>
-
 @stop

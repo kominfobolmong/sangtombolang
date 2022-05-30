@@ -42,7 +42,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($tags as $no => $tag)
+                            @forelse ($tags as $no => $tag)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($tags->currentPage()-1) * $tags->perPage() }}</th>
                                     <td>{{ $tag->name }}</td>
@@ -60,7 +60,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="3">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

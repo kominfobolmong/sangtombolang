@@ -44,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($files as $no => $file)
+                                @forelse ($files as $no => $file)
                                 <tr>
                                     <th scope="row" style="text-align: center">
                                         {{ ++$no + ($files->currentPage()-1) * $files->perPage() }}</th>
@@ -67,7 +67,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                                @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="5">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

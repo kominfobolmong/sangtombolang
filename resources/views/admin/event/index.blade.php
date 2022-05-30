@@ -44,7 +44,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($events as $no => $event)
+                            @forelse ($events as $no => $event)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($events->currentPage()-1) * $events->perPage() }}</th>
                                     <td>{{ $event->title }}</td>
@@ -64,7 +64,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="5">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">

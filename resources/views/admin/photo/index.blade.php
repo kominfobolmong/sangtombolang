@@ -70,7 +70,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($photos as $no => $photo)
+                            @forelse ($photos as $no => $photo)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($photos->currentPage()-1) * $photos->perPage() }}</th>
                                     <td><img src="{{ Storage::url('public/photo-images/'. $photo->image) }}" style="width: 200px"></td>
@@ -83,7 +83,11 @@
                                         @endcan
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="4">Empty</td>
+                            </tr>
+                            @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">
