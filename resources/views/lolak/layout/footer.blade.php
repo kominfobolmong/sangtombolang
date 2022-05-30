@@ -4,12 +4,12 @@
 
           <div class="col-lg-3 col-md-6">
               <div class="footer-info">
-                  <h3>{{$namakecamatan->nama_kecamatan}}</h3>
+                  <h3>Pemerintah Kabupaten Bolaang Mongondow</h3>
                   <p>
-                      A108 Adam Street <br>
-                      NY 535022, USA<br><br>
-                      <strong>Phone:</strong> +1 5589 55488 55<br>
-                      <strong>Email:</strong> info@example.com<br>
+                    Lolak Tambolango, Lolak, Kabupaten Bolaang Mongondow, Sulawesi Utara
+                    Kode pos 95761, Bolaang Mongdong<br><br>
+                      <strong>Phone:</strong> -<br>
+                      <strong>Email:</strong>pemerintah@bolmongkab.go.id<br>
                   </p>
                   <div class="social-links mt-3">
                       <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -56,7 +56,7 @@
 
 <div class="container">
   <div class="copyright">
-      &copy; Copyright <strong><span>{{$namakecamatan->nama_kecamatan}}</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Diskominfo</span></strong>. All Rights Reserved
   </div>
   <div class="credits">
       Support by <a href="#">E-Government</a>

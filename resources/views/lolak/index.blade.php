@@ -21,7 +21,7 @@
             <div class="carousel-inner" role="listbox">
 
                 @foreach ($sliders as $i => $slide)
-                <div class="carousel-item @if($i===0) active @endif"" style=" background-image: url({{ $slide->image }})">
+                <div class="carousel-item @if($i===0) active @endif" style=" background-image: url({{ $slide->image }})">
                     <div class="carousel-container">
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown">Kecamatan <span>Lolak</span></h2>

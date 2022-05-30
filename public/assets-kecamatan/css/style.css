@@ -287,28 +287,88 @@ h1, h2, h3, h4, h5, h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
+  margin-top: 91px;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   background-color: rgba(63, 73, 83, 0.8);
   overflow: hidden;
   position: relative;
 }
-#hero .carousel, #hero .carousel-inner, #hero .carousel-item, #hero .carousel-item::before {
+
+#hero .carousel,
+#hero .carousel-inner,
+#hero .carousel-item,
+#hero .carousel-item::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
 }
+
 #hero .carousel-item {
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
 }
+
 #hero .carousel-item::before {
-  content: "";
+  content: '';
   background-color: rgba(30, 35, 40, 0.6);
 }
+
+@media (max-width: 768px) {
+  #hero .carousel-item {
+      height: 250px;
+  }
+  #hero .carousel-item h2 {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      font-size: 15px;
+  }
+  #hero .carousel-item p {
+      font-size: 10px;
+  }
+  #hero {
+      height: 250px;
+  }
+}
+
+@media (max-width: 414px) {
+  #hero .carousel-item {
+      height: 140px;
+  }
+  #hero .carousel-item h2 {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      font-size: 15px;
+  }
+  #hero .carousel-item p {
+      font-size: 10px;
+  }
+  #hero {
+      height: 140px;
+  }
+}
+
+
+@media (max-width: 360px) {
+  #hero .carousel-item {
+      height: 120px;
+  }
+  #hero .carousel-item h2 {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      font-size: 15px;
+  }
+  #hero .carousel-item p {
+      font-size: 10px;
+  }
+  #hero {
+      height: 120px;
+  }
+}
+
 #hero .carousel-container {
   display: flex;
   justify-content: center;
@@ -319,63 +379,85 @@ h1, h2, h3, h4, h5, h6 {
   left: 50px;
   right: 50px;
 }
+
 #hero .container {
   text-align: center;
 }
+
 #hero h2 {
   color: #fff;
   margin-bottom: 20px;
   font-size: 48px;
   font-weight: 700;
 }
+
 #hero p {
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
   margin: 0 auto 30px auto;
   color: #fff;
 }
+
 #hero .carousel-inner .carousel-item {
   transition-property: opacity;
-  background-position: center top;
+  /* background-position: center top; */
 }
+
 #hero .carousel-inner .carousel-item,
-#hero .carousel-inner .active.carousel-item-start,
-#hero .carousel-inner .active.carousel-item-end {
+#hero .carousel-inner .active.carousel-item-left,
+#hero .carousel-inner .active.carousel-item-right {
   opacity: 0;
 }
+
 #hero .carousel-inner .active,
-#hero .carousel-inner .carousel-item-next.carousel-item-start,
-#hero .carousel-inner .carousel-item-prev.carousel-item-end {
+#hero .carousel-inner .carousel-item-next.carousel-item-left,
+#hero .carousel-inner .carousel-item-prev.carousel-item-right {
   opacity: 1;
   transition: 0.5s;
 }
+
 #hero .carousel-inner .carousel-item-next,
 #hero .carousel-inner .carousel-item-prev,
-#hero .carousel-inner .active.carousel-item-start,
-#hero .carousel-inner .active.carousel-item-end {
+#hero .carousel-inner .active.carousel-item-left,
+#hero .carousel-inner .active.carousel-item-right {
   left: 0;
   transform: translate3d(0, 0, 0);
 }
-#hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
+
+#hero .carousel-control-prev,
+#hero .carousel-control-next {
+  width: 10%;
+  top: 112px;
+}
+
+@media (max-width: 992px) {
+
+  #hero .carousel-control-prev,
+  #hero .carousel-control-next {
+      top: 66px;
+  }
+}
+
+#hero .carousel-control-next-icon,
+#hero .carousel-control-prev-icon {
   background: none;
-  font-size: 30px;
-  line-height: 0;
+  font-size: 36px;
+  line-height: 1;
   width: auto;
   height: auto;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50px;
+  padding: 10px;
   transition: 0.3s;
   color: rgba(255, 255, 255, 0.5);
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-#hero .carousel-control-next-icon:hover, #hero .carousel-control-prev-icon:hover {
+
+#hero .carousel-control-next-icon:hover,
+#hero .carousel-control-prev-icon:hover {
   background: rgba(255, 255, 255, 0.3);
   color: rgba(255, 255, 255, 0.8);
 }
+
 #hero .carousel-indicators li {
   cursor: pointer;
   background: #fff;
@@ -384,15 +466,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 12px;
   height: 12px;
   border-radius: 50px;
-  opacity: 0.6;
+  opacity: .6;
   transition: 0.3s;
 }
+
 #hero .carousel-indicators li.active {
   opacity: 1;
-  background: #d9232d;
+  background: #4154f1;
 }
+
 #hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
+  /* font-family: "Raleway", sans-serif; */
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -406,30 +490,38 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: 0.8s;
   background: #d9232d;
 }
+
 #hero .btn-get-started:hover {
-  background: #df3740;
+  background: #de444c;
 }
+
 @media (max-width: 992px) {
-  #hero {
-    height: 100vh;
-  }
+  /* #hero {
+      height: 100vh;
+  } */
+
   #hero .carousel-container {
-    top: 8px;
+      top: 8px;
   }
 }
+
 @media (max-width: 768px) {
   #hero h2 {
-    font-size: 28px;
+      font-size: 28px;
   }
 }
+
 @media (min-width: 1024px) {
-  #hero .carousel-control-prev, #hero .carousel-control-next {
-    width: 5%;
+
+  #hero .carousel-control-prev,
+  #hero .carousel-control-next {
+      width: 5%;
   }
 }
+
 @media (max-height: 500px) {
   #hero {
-    height: 120vh;
+      height: 120vh;
   }
 }
 
