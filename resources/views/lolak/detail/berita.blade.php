@@ -37,7 +37,7 @@
 
           <div class="col-lg-8 entries">
 
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
             <article class="entry">
 
               <div class="entry-img">
@@ -65,7 +65,12 @@
               </div>
 
             </article><!-- End blog entry -->
-            @endforeach
+
+            @empty
+
+            <p>Tidak Ada Berita</p>
+
+            @endforelse
 
             <div class="blog-pagination">
               <ul class="justify-content-center">

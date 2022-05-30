@@ -3,6 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\View\Composers\ChanelsComposer;
+use View;
+
+use App\Models\Profile;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $namakecamatan = Profile::first();
+        View()->share('namakecamatan', $namakecamatan);
     }
 }

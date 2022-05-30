@@ -1,6 +1,6 @@
 <div class="container d-flex align-items-center">
 
-  <h1 class="logo me-auto"><a href="index.html">Lolak</a></h1>
+  <h1 class="logo me-auto"><a href="index.html">{{$namakecamatan->nama_kecamatan}}</a></h1>
   <!-- Uncomment below if you prefer to use an image logo -->
   <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -10,6 +10,7 @@
       <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
         <ul>
           <li class="{{ (request()->is('visi-misi')) ? 'active' : '' }}"><a href="{{ ('/visi-misi') }}">Visi & Misi</a></li>
+          <li class="{{ (request()->is('dasar-hukum')) ? 'active' : '' }}"><a href="{{ ('/dasar-hukum') }}">Dasar Hukum</a></li>
           <li class="{{ (request()->is('potensi')) ? 'active' : '' }}"><a href="{{ ('/potensi') }}">Potensi</a></li>
         </ul>
       </li>
