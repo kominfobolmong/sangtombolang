@@ -20,6 +20,7 @@ use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\News;
 use App\Models\Potensi;
 use App\Models\Profile;
@@ -44,6 +45,11 @@ class PageController extends Controller
     public function visimisi(){
         $visimisi = Profile::first();
         return view('lolak/detail/visimisi',compact('visimisi'));
+    }
+
+    public function kontak(){
+        $kontak = Contact::first();
+        return view('lolak/detail/kontak',compact('kontak'));
     }
     
     public function struktur(){

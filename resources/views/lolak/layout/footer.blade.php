@@ -23,18 +23,18 @@
           <div class="col-lg-2 col-md-6 footer-links">
               <h4>Profil Kecamatan</h4>
               <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Visi</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Misi</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Dasar Hukum</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Potensi</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="{{ ('/visi-misi') }}">Visi dan Misi</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="{{ ('/struktur') }}">Struktur Organisasi</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="{{ ('/dasar-hukum') }}">Dasar Hukum</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="{{ ('/potensi') }}">Potensi</a></li>
               </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
               <h4>Informasi</h4>
               <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Agenda</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Berita</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="{{ ('/event') }}">Agenda</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="{{ ('/berita') }}">Berita</a></li>
               </ul>
           </div>
 
