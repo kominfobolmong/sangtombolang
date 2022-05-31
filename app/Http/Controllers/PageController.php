@@ -22,16 +22,17 @@ class PageController extends Controller
 {
     public function index(){
         $postssatu = News::with('tags')->take(1)->latest()->get();
-        $posts = News::with('tags')->take(3)->latest()->get();
-        $events = Event::take(3)->latest()->get();
+        $posts = News::with('tags')->take(2)->latest()->get();
+        $postskegiatan = News::with('tags')->take(8)->latest()->get();
+        $events = Event::take(2)->latest()->get();
         $sliders = Slider::latest()->get();
         $services = Service::all();
         return view('lolak/index',compact(
-            'posts','events','sliders','services','postssatu'));
+            'posts','events','sliders','services','postssatu','postskegiatan'));
     }
 
     public function eventDetail(Request $request, $id){
-        $events = Event::where('id', $id)->firstOrFail();
+          
         return view('bolmongkab/detail/agenda-detail',compact('events'));
     }
 
