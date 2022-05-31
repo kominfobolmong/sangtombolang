@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
 use Illuminate\Support\ServiceProvider;
 
 use App\Models\Profile;
@@ -26,7 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $kontak = Contact::first();
         $namakecamatan = Profile::first();
         View()->share('namakecamatan', $namakecamatan);
+        View()->share('kontak', $kontak);
     }
 }

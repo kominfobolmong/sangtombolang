@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'index']);
 Route::get('/visi-misi', [App\Http\Controllers\PageController::class, 'visimisi']);
+Route::get('/struktur', [App\Http\Controllers\PageController::class, 'struktur']);
+Route::get('/potensi', [App\Http\Controllers\PageController::class, 'potensi']);
 Route::get('/dasar-hukum', [App\Http\Controllers\PageController::class, 'dasarhukum']);
 Route::get('/arti-lambang', [App\Http\Controllers\PageController::class, 'artilambang']);
 Route::get('/bupati', [App\Http\Controllers\PageController::class, 'bupati']);

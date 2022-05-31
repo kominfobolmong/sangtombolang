@@ -6,10 +6,9 @@
               <div class="footer-info">
                   <h3>Pemerintah Kabupaten Bolaang Mongondow</h3>
                   <p>
-                    Lolak Tambolango, Lolak, Kabupaten Bolaang Mongondow, Sulawesi Utara
-                    Kode pos 95761, Bolaang Mongdong<br><br>
-                      <strong>Phone:</strong> -<br>
-                      <strong>Email:</strong>pemerintah@bolmongkab.go.id<br>
+                    {{$kontak->alamat}}<br><br>
+                      <strong>Phone:</strong> {{$kontak->no_telp}}<br>
+                      <strong>Email:</strong> {{$kontak->email}}<br>
                   </p>
                   <div class="social-links mt-3">
                       <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>

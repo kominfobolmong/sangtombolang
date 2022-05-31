@@ -5,6 +5,7 @@
 <script src="{{ asset('assets-kecamatan/vendor/swiper/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('assets-kecamatan/vendor/waypoints/noframework.waypoints.js') }}"></script>
 <script src="{{ asset('assets-kecamatan/vendor/php-email-form/validate.js') }}"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets-kecamatan/js/main.js') }}"></script>

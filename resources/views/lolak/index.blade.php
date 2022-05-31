@@ -23,14 +23,15 @@
                 @foreach ($sliders as $i => $slide)
                 <div class="carousel-item @if($i===0) active @endif" style=" background-image: url({{ $slide->image }})">
                     <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Kecamatan <span>Lolak</span></h2>
-                            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                vel. Minus et tempore modi architecto.</p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
-                                More</a>
+                        <div class="container" style="text-align: left">
+                          @foreach ($postssatu as $post)
+                          <div class="col-5">
+                            <h2 class="animate__animated animate__fadeInDown" style="float: left;">{!! \Illuminate\Support\Str::limit(nl2br($post->title), 80,'...') !!}</h2>
+                            <p class="animate__animated animate__fadeInUp" style="float: left;">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
+                            <a style="float: left;" href="{{ route('berita-detail',$post->id) }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Baca</a>
+                          </div>
+                          @endforeach
+
                         </div>
                     </div>
                 </div>
