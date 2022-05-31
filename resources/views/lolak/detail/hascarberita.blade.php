@@ -106,7 +106,7 @@
                 @foreach ($sidebar as $side)
                 <div class="post-item clearfix">
                   <img src="{{$side->image}}" alt="">
-                  <h4 class="recent-blog-body"><a href="blog-single.html">{{$side->title}}</a></h4>
+                  <h4 class="recent-blog-body"><a href="{{ route('berita-detail',$side->id) }}">{{$side->title}}</a></h4>
                   <time datetime="2020-01-01">{{$side->created_at}}</time>
                 </div>
                 @endforeach

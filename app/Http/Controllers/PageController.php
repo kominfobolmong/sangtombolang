@@ -3,19 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 
-use App\Models\Post;
 use App\Models\Event;
 use App\Models\Tag;
 use App\Models\Slider;
-use App\Models\Leader;
 use App\Models\Service;
-use App\Models\Banner;
-use App\Models\Statik;
 use App\Models\Category;
-use App\Models\Dinasdetail;
-use App\Models\Instansi;
 use App\Models\Download;
-use App\Models\Travel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -123,20 +116,6 @@ class PageController extends Controller
         return view('lolak/detail/hascarberita',compact('posts','kategori','sidebar','tags'));
     }
 
-    public function hascarpengumuman(Request $request) {
-        if($request->has('cari')){
-            $kategori = Category::latest()->get();
-            $tags = Tag::latest()->get();
-            $sidebar = Post::skip(5)->Paginate(5);
-            $posts = Post::where('title','LIKE','%'.$request->cari.'%')->get();
-        } else {
-            $kategori = Category::latest()->simplePaginate(5);
-            $posts = Post::where('id', $id)->firstOrFail();
-            $tags = Tag::latest()->get();
-            $sidebar = Post::skip(5)->Paginate(5);
-        }
-        return view('bolmongkab/detail/hascarpengumuman',compact('posts','kategori','sidebar','tags'));
-    }
 
     public function kategori(Category $category) {
        
@@ -152,9 +131,9 @@ class PageController extends Controller
        
         $kategori = Category::latest()->get();
         $tags = Tag::latest()->get();
-        $sidebar = Post::skip(5)->Paginate(5);
-        $posts = $tag->posts()->latest()->paginate(4);
+        $sidebar = News::skip(5)->Paginate(5);
+        $posts = $tag->news()->latest()->paginate(4);
 
-    return view('bolmongkab/detail/pengumuman',compact('posts','kategori','sidebar','tags'));
+    return view('lolak/detail/berita',compact('posts','kategori','sidebar','tags'));
 }
 }
