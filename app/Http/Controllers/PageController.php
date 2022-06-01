@@ -3,45 +3,57 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 
-use App\Models\Post;
 use App\Models\Event;
 use App\Models\Tag;
 use App\Models\Slider;
-use App\Models\Leader;
 use App\Models\Service;
-use App\Models\Banner;
-use App\Models\Statik;
 use App\Models\Category;
-use App\Models\Dinasdetail;
-use App\Models\Instansi;
 use App\Models\Download;
-use App\Models\Travel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\News;
+use App\Models\Potensi;
 use App\Models\Profile;
 
 class PageController extends Controller
 {
     public function index(){
-        $posts = News::with('tags')->take(3)->latest()->get();
-        $events = Event::take(3)->latest()->get();
+        $postssatu = News::with('tags')->take(1)->latest()->get();
+        $posts = News::with('tags')->take(2)->latest()->get();
+        $postskegiatan = News::with('tags')->take(8)->latest()->get();
+        $events = Event::take(2)->latest()->get();
         $sliders = Slider::latest()->get();
         $services = Service::all();
         return view('lolak/index',compact(
-            'posts','events','sliders','services'));
+            'posts','events','sliders','services','postssatu','postskegiatan'));
     }
 
     public function eventDetail(Request $request, $id){
-        $events = Event::where('id', $id)->firstOrFail();
+          
         return view('bolmongkab/detail/agenda-detail',compact('events'));
     }
 
     public function visimisi(){
         $visimisi = Profile::first();
         return view('lolak/detail/visimisi',compact('visimisi'));
+    }
+
+    public function kontak(){
+        $kontak = Contact::first();
+        return view('lolak/detail/kontak',compact('kontak'));
+    }
+    
+    public function struktur(){
+        $struktur = Profile::first();
+        return view('lolak/detail/struktur',compact('struktur'));
+    }
+
+    public function potensi(){
+        $potensi = Potensi::first();
+        return view('lolak/detail/potensi',compact('potensi'));
     }
 
     public function dasarhukum(){
@@ -105,20 +117,6 @@ class PageController extends Controller
         return view('lolak/detail/hascarberita',compact('posts','kategori','sidebar','tags'));
     }
 
-    public function hascarpengumuman(Request $request) {
-        if($request->has('cari')){
-            $kategori = Category::latest()->get();
-            $tags = Tag::latest()->get();
-            $sidebar = Post::skip(5)->Paginate(5);
-            $posts = Post::where('title','LIKE','%'.$request->cari.'%')->get();
-        } else {
-            $kategori = Category::latest()->simplePaginate(5);
-            $posts = Post::where('id', $id)->firstOrFail();
-            $tags = Tag::latest()->get();
-            $sidebar = Post::skip(5)->Paginate(5);
-        }
-        return view('bolmongkab/detail/hascarpengumuman',compact('posts','kategori','sidebar','tags'));
-    }
 
     public function kategori(Category $category) {
        
@@ -134,9 +132,9 @@ class PageController extends Controller
        
         $kategori = Category::latest()->get();
         $tags = Tag::latest()->get();
-        $sidebar = Post::skip(5)->Paginate(5);
-        $posts = $tag->posts()->latest()->paginate(4);
+        $sidebar = News::skip(5)->Paginate(5);
+        $posts = $tag->news()->latest()->paginate(4);
 
-    return view('bolmongkab/detail/pengumuman',compact('posts','kategori','sidebar','tags'));
+    return view('lolak/detail/berita',compact('posts','kategori','sidebar','tags'));
 }
 }

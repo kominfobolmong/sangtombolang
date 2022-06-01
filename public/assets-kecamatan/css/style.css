@@ -490,6 +490,9 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: 0.8s;
   background: #d9232d;
 }
+#hero h2 {
+  font-size: 30px;
+}
 
 #hero .btn-get-started:hover {
   background: #de444c;
@@ -499,7 +502,9 @@ h1, h2, h3, h4, h5, h6 {
   /* #hero {
       height: 100vh;
   } */
-
+  #hero h2 {
+    font-size: 20px;
+}
   #hero .carousel-container {
       top: 8px;
   }
@@ -507,7 +512,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   #hero h2 {
-      font-size: 28px;
+      font-size: 10px;
   }
 }
 
@@ -562,7 +567,7 @@ section {
 .section-title p {
   margin: 0;
   margin: 0;
-  font-size: 36px;
+  font-size: 27px;
   font-weight: 700;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;

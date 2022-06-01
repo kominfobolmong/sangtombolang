@@ -23,14 +23,15 @@
                 @foreach ($sliders as $i => $slide)
                 <div class="carousel-item @if($i===0) active @endif" style=" background-image: url({{ $slide->image }})">
                     <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Kecamatan <span>Lolak</span></h2>
-                            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                vel. Minus et tempore modi architecto.</p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
-                                More</a>
+                        <div class="container" style="text-align: left">
+                          @foreach ($postssatu as $post)
+                          <div class="col-5">
+                            <h2 class="animate__animated animate__fadeInDown" style="float: left;">{!! \Illuminate\Support\Str::limit(nl2br($post->title), 80,'...') !!}</h2>
+                            <p class="animate__animated animate__fadeInUp" style="float: left;">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
+                            <a style="float: left;" href="{{ route('berita-detail',$post->id) }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Baca</a>
+                          </div>
+                          @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -55,29 +56,90 @@
 
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2><i class="bi bi-newspaper"></i></h2>
-          <p>Berita terbaru</p>
-        </div>
-
-        <div class="row">
-
-          @foreach ($posts as $post)
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="post-box">
-              <div class="post-img"><img src="{{ $post->image}}" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}</span>
-                <span class="post-author"> / {{ $post->user->name }}</span>
-              </div>
-              <h3 class="post-title-recent">{{ $post->title }}</h3>
-              <p class="recent-blog-body">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
-              <a href="{{ route('berita-detail',$post->id) }}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+        <div class="row g-5">
+          <div class="col-6">
+            <div class="section-title">
+              <h2><i class="bi bi-newspaper"></i></h2>
+              <p>Berita terbaru</p>
             </div>
+    
+            <div class="row">
+    
+              @foreach ($posts as $post)
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="post-box">
+                  <div class="post-img"><img src="{{ $post->image}}" class="img-fluid" alt=""></div>
+                  <div class="meta">
+                    <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}</span>
+                    <span class="post-author"> / {{ $post->user->name }}</span>
+                  </div>
+                  <h3 class="post-title-recent">{{ $post->title }}</h3>
+                  <p class="recent-blog-body">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
+                  <a href="{{ route('berita-detail',$post->id) }}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+              @endforeach
+    
+            </div>   
           </div>
-          @endforeach
 
-        </div>   
+          <div class="col-6">
+            <div class="section-title">
+              <h2><i class="bi bi-newspaper"></i></h2>
+              <p>Kegiatan</p>
+            </div>
+    
+            <div class="row">
+    
+              @foreach ($postskegiatan as $post)
+              <div  style="background-color: aliceblue; padding:5%" class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="post-box">
+                  <div class="post-img"><img src="{{ $post->image}}" class="img-fluid" alt=""></div>
+                  <div class="meta">
+                    <span style="font-size: 10px" class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}</span>
+                    <span style="font-size: 10px" class="post-author"> / {{ $post->user->name }}</span>
+                  </div>
+                  <h3 style="font-size: 12px" class="post-title-recent">{{ $post->title }}</h3>
+                </div>
+              </div>
+              @endforeach
+    
+            </div>   
+
+            <div class="section-title" style="margin-bottom:-4%; margin-top:4%">
+              <h2><i class="bi bi-newspaper"></i></h2>
+              <p>Agenda</p>
+            </div>
+    
+            <div class="row">
+    
+              @forelse ($events as $event)
+              <div class="col-lg-6" style="background-color: aliceblue; padding:5%;">
+                <div class="member d-flex align-items-start">
+                  {{-- <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div> --}}
+                  <div class="member-info">
+                    <h4>{{$event->title}}</h4>
+                    <span>{{$event->location}} - {{$event->date}}</span>
+                    <p>{!! nl2br($event->content)!!}</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              @empty
+    
+              <p>Tidak Ada Agenda</p>
+    
+              @endforelse
+    
+            </div>  
+          </div>
+        </div>
 
       </div>
 
