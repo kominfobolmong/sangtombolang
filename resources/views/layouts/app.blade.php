@@ -146,6 +146,16 @@
                         <span>Contact</span></a></li>
                         @endcan
 
+                        @can('link.index')
+                        <li class="{{ setActive('admin/link') }}"><a class="nav-link" href="{{ route('admin.link.index') }}"><i class="fas fa-link"></i>
+                        <span>Link Terkait</span></a></li>
+                        @endcan
+
+                        @can('sosmed.index')
+                        <li class="{{ setActive('admin/sosmed') }}"><a class="nav-link" href="{{ route('admin.link.index') }}"><i class="fas fa-users"></i>
+                        <span>Sosial Media</span></a></li>
+                        @endcan
+
                         <li
                             class="dropdown {{ setActive('admin/role'). setActive('admin/permission'). setActive('admin/user') }}">
                             @if(auth()->user()->can('roles.index') || auth()->user()->can('permission.index') || auth()->user()->can('users.index'))
