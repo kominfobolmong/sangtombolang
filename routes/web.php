@@ -74,11 +74,14 @@ Route::prefix('admin')->group(function () {
         //profile
         Route::resource('/profile', App\Http\Controllers\Admin\ProfileController::class, ['except' => ['show'], 'as' => 'admin']);
 
+        // link
+        Route::resource('link', App\Http\Controllers\Admin\LinkController::class, ['except' => ['show'], 'as' => 'admin']);
+
         //potensi
         Route::resource('/potensi', App\Http\Controllers\Admin\PotensiController::class, ['except' => ['show'], 'as' => 'admin']);
 
         Route::resource('/contact', App\Http\Controllers\Admin\ContactController::class, ['except' => ['show'], 'as' => 'admin']);
 
-        Route::resource('/link', App\Http\Controllers\Admin\LinkController::class, ['except' => ['show'], 'as' => 'admin']);
+        Route::resource('sosmed', App\Http\Controllers\Admin\SosmedController::class, ['except' => ['show'], 'as' => 'admin']);
     });
 });

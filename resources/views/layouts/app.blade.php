@@ -152,7 +152,7 @@
                         @endcan
 
                         @can('sosmed.index')
-                        <li class="{{ setActive('admin/sosmed') }}"><a class="nav-link" href="{{ route('admin.link.index') }}"><i class="fas fa-users"></i>
+                        <li class="{{ setActive('admin/sosmed') }}"><a class="nav-link" href="{{ route('admin.sosmed.index') }}"><i class="fas fa-users"></i>
                         <span>Sosial Media</span></a></li>
                         @endcan
 
