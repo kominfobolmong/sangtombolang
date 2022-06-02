@@ -49,11 +49,11 @@
                                     </td>
                                     <td class="text-center">
                                         
-                                        @can('profile.delete')
+                                        {{-- @can('profile.delete')
                                         <button onClick="Delete(this.id)" class="btn btn-sm btn-primary" id="{{ $profile->id }}">
                                             <i class="fa fa-eye"></i>
                                         </button>
-                                        @endcan
+                                        @endcan --}}
 
                                         @can('profile.edit')
                                             <a href="{{ route('admin.profile.edit', $profile->id) }}" class="btn btn-sm btn-warning">
