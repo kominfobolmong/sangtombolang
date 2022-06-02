@@ -1,8 +1,11 @@
 <div class="container d-flex align-items-center">
 
-  <h1 class="logo me-auto"><a href="index.html">{{$namakecamatan->nama_kecamatan}}</a></h1>
-  <!-- Uncomment below if you prefer to use an image logo -->
-  <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  @forelse($namakecamatan as $item)
+  <a href="{{ ('/') }}" style="margin-right: 5px; max-width: 2%" class="logo"><img src="{{ Storage::url($item->logo ?? null) }}" alt="" class="img-fluid"></a>
+  <h1 class="logo me-auto"><a href="{{ ('/') }}">{{$item->nama_kecamatan}}</a></h1>
+  @empty
+
+  @endforelse
 
   <nav id="navbar" class="navbar">
     <ul>
@@ -19,6 +22,12 @@
         <ul>
           <li><a class="{{ (request()->is('event')) ? 'active' : '' }}" href="{{ ('/event') }}">Agenda</a></li>
           <li><a class="{{ (request()->is('berita')) ? 'active' : '' }}" href="{{ ('/berita') }}">Berita</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="{{ (request()->is('foto','video')) ? 'active' : '' }}" href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          <li><a class="{{ (request()->is('foto')) ? 'active' : '' }}" href="{{ ('/foto') }}">Foto</a></li>
+          <li><a class="{{ (request()->is('video')) ? 'active' : '' }}" href="{{ ('/video') }}">Video</a></li>
         </ul>
       </li>
       <li><a href="{{ ('/kontak') }}" class="{{ (request()->is('/kontak')) ? 'active' : '' }}">Kontak</a></li>

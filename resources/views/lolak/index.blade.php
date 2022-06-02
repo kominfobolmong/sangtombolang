@@ -91,17 +91,20 @@
     
             <div class="row">
     
-              @foreach ($postskegiatan as $post)
+              @foreach ($postskegiatan as $keg)
+              @foreach ($keg->news as $item)
               <div  style="background-color: aliceblue; padding:5%" class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="post-box">
-                  <div class="post-img"><img src="{{ $post->image}}" class="img-fluid" alt=""></div>
+                  <div class="post-img"><img src="{{ $item->image}}" class="img-fluid" alt=""></div>
                   <div class="meta">
-                    <span style="font-size: 10px" class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->diffForhumans() }}</span>
-                    <span style="font-size: 10px" class="post-author"> / {{ $post->user->name }}</span>
+                    <span style="font-size: 10px" class="post-date"> {{ \Carbon\Carbon::parse($item->created_at)->diffForhumans() }}</span>
+                    <span style="font-size: 10px" class="post-author"> / {{ $item->user->name}}</span>
                   </div>
-                  <h3 style="font-size: 12px" class="post-title-recent">{{ $post->title }}</h3>
+                  <h3 style="font-size: 12px" class="post-title-recent">{{ $item->title }}</h3>
+                  <a  class="stretched-link" href="{{ route('berita-detail',$item->id) }}"></a>
                 </div>
               </div>
+              @endforeach
               @endforeach
     
             </div>   
@@ -114,19 +117,13 @@
             <div class="row">
     
               @forelse ($events as $event)
-              <div class="col-lg-6" style="background-color: aliceblue; padding:5%;">
+              <div class="col-lg-6" style="background-color: aliceblue; padding:5%; ">
                 <div class="member d-flex align-items-start">
                   {{-- <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div> --}}
                   <div class="member-info">
                     <h4>{{$event->title}}</h4>
                     <span>{{$event->location}} - {{$event->date}}</span>
                     <p>{!! nl2br($event->content)!!}</p>
-                    <div class="social">
-                      <a href=""><i class="ri-twitter-fill"></i></a>
-                      <a href=""><i class="ri-facebook-fill"></i></a>
-                      <a href=""><i class="ri-instagram-fill"></i></a>
-                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                    </div>
                   </div>
                 </div>
               </div>

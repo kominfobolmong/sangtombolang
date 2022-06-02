@@ -8,6 +8,8 @@ Route::get('/', [App\Http\Controllers\PageController::class, 'index']);
 Route::get('/visi-misi', [App\Http\Controllers\PageController::class, 'visimisi']);
 Route::get('/struktur', [App\Http\Controllers\PageController::class, 'struktur']);
 Route::get('/potensi', [App\Http\Controllers\PageController::class, 'potensi']);
+Route::get('/foto', [App\Http\Controllers\PageController::class, 'foto']);
+Route::get('/video', [App\Http\Controllers\PageController::class, 'video']);
 Route::get('/kontak', [App\Http\Controllers\PageController::class, 'kontak']);
 Route::get('/dasar-hukum', [App\Http\Controllers\PageController::class, 'dasarhukum']);
 Route::get('/event', [App\Http\Controllers\PageController::class, 'event']);

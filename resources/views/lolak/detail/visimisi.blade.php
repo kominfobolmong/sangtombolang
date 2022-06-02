@@ -38,7 +38,11 @@
             <div class="member d-flex align-items-start">
               <div class="member-info">
                 <h4>Visi</h4>
-                <p>{!! nl2br(($visimisi->visi)) !!}</p>
+                @forelse($visimisi as $item)
+                <p>{!! nl2br(($item->visi)) !!}</p>
+                @empty
+                <p>Belum di isi</p>
+                @endforelse
               </div>
             </div>
 
@@ -47,7 +51,11 @@
             <div class="member d-flex align-items-start">
               <div class="member-info">
                 <h4>Misi</h4>
-                <p>{!! nl2br(($visimisi->misi)) !!}</p>
+                @forelse($visimisi as $item)
+                <p>{!! nl2br(($item->misi)) !!}</p>
+                @empty
+                <p>Belum di isi</p>
+                @endforelse
               </div>
             </div>
           </div>

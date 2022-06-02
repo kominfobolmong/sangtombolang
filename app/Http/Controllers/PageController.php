@@ -15,15 +15,18 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\News;
+use App\Models\Photo;
 use App\Models\Potensi;
 use App\Models\Profile;
+use App\Models\Video;
 
 class PageController extends Controller
 {
     public function index(){
         $postssatu = News::with('tags')->take(1)->latest()->get();
         $posts = News::with('tags')->take(2)->latest()->get();
-        $postskegiatan = News::with('tags')->take(8)->latest()->get();
+        // $postskegiatan = News::with('tags')->take(8)->latest()->get();
+        $postskegiatan = Category::where('name','kegiatan')->with('news')->take(4)->latest()->get();
         $events = Event::take(2)->latest()->get();
         $sliders = Slider::latest()->get();
         $services = Service::all();
@@ -37,27 +40,34 @@ class PageController extends Controller
     }
 
     public function visimisi(){
-        $visimisi = Profile::first();
+        $visimisi = Profile::latest()->get();
         return view('lolak/detail/visimisi',compact('visimisi'));
     }
-
+    public function foto(){
+        $foto = Photo::latest()->paginate(12);
+        return view('lolak/detail/foto',compact('foto'));
+    }
+    public function video(){
+        $video = Video::latest()->paginate(12);
+        return view('lolak/detail/video',compact('video'));
+    }
     public function kontak(){
-        $kontak = Contact::first();
+        $kontak = Contact::latest()->get();
         return view('lolak/detail/kontak',compact('kontak'));
     }
     
     public function struktur(){
-        $struktur = Profile::first();
+        $struktur = Profile::firstOrFail();
         return view('lolak/detail/struktur',compact('struktur'));
     }
 
     public function potensi(){
-        $potensi = Potensi::first();
+        $potensi = Potensi::firstOrFail();
         return view('lolak/detail/potensi',compact('potensi'));
     }
 
     public function dasarhukum(){
-        $dasarhukum = Profile::first();
+        $dasarhukum = Profile::firstOrFail();
         return view('lolak/detail/dasarhukum',compact('dasarhukum'));
     }
 
