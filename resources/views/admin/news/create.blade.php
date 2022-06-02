@@ -30,6 +30,7 @@
 
                         <div class="form-group">
                             <label>GAMBAR</label>
+                            <p>Ukuran gambar yang disarankan: <strong>1104x736</strong></p>
                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
 
                             @error('image')

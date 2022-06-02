@@ -47,8 +47,10 @@
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$no + ($videos->currentPage()-1) * $videos->perPage() }}</th>
                                     <td>{{ $video->title }}</td>
-                                    <td class="text-center">
-                                        <iframe width="300" height="150" src="{{ $video->embed }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <td>
+                                        <div class="col-6">
+                                            {!! $video->embed !!}
+                                        </div>
                                     </td>
                                     <td class="text-center">
                                         @can('videos.edit')
