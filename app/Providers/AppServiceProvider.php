@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $kontak = Contact::first();
-        $namakecamatan = Profile::latest()->get();
+        $kontak = Contact::latest()->get();
+        $namakecamatan = Profile::take(1)->latest()->get();
         View()->share('namakecamatan', $namakecamatan);
         View()->share('kontak', $kontak);
     }

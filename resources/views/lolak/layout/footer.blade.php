@@ -1,4 +1,5 @@
 <div class="footer-top">
+    @forelse($kontak as $item)
   <div class="container">
       <div class="row">
 
@@ -6,9 +7,9 @@
               <div class="footer-info">
                   <h3>Pemerintah Kabupaten Bolaang Mongondow</h3>
                   <p>
-                    {{$kontak->alamat}}<br><br>
-                      <strong>Phone:</strong> {{$kontak->no_telp}}<br>
-                      <strong>Email:</strong> {{$kontak->email}}<br>
+                    {{$item->alamat}}<br><br>
+                      <strong>Phone:</strong> {{$item->no_telp}}<br>
+                      <strong>Email:</strong> {{$item->email}}<br>
                   </p>
                   <div class="social-links mt-3">
                       <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -51,6 +52,9 @@
 
       </div>
   </div>
+  @empty
+
+  @endforelse
 </div>
 
 <div class="container">

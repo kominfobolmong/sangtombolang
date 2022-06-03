@@ -40,7 +40,7 @@ class PageController extends Controller
     }
 
     public function visimisi(){
-        $visimisi = Profile::latest()->get();
+        $visimisi = Profile::take(1)->latest()->get();
         return view('lolak/detail/visimisi',compact('visimisi'));
     }
     public function foto(){
@@ -52,22 +52,22 @@ class PageController extends Controller
         return view('lolak/detail/video',compact('video'));
     }
     public function kontak(){
-        $kontak = Contact::latest()->get();
+        $kontak = Contact::take(1)->latest()->get();
         return view('lolak/detail/kontak',compact('kontak'));
     }
     
     public function struktur(){
-        $struktur = Profile::firstOrFail();
+        $struktur = Profile::take(1)->latest()->get();
         return view('lolak/detail/struktur',compact('struktur'));
     }
 
     public function potensi(){
-        $potensi = Potensi::firstOrFail();
+        $potensi = Potensi::take(1)->latest()->get();
         return view('lolak/detail/potensi',compact('potensi'));
     }
 
     public function dasarhukum(){
-        $dasarhukum = Profile::firstOrFail();
+        $dasarhukum = Profile::take(1)->latest()->get();
         return view('lolak/detail/dasarhukum',compact('dasarhukum'));
     }
 

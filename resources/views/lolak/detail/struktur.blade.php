@@ -32,16 +32,20 @@
     <!-- ======= Team Section ======= -->
     <section id="team" class="team ">
       <div class="container">
+        @forelse($struktur as $item)
           <div class="col-lg-12">
 
     
                 {{-- <h4>Struktur Organisasi</h4> --}}
-                <img src="{{ Storage::url($struktur->struktur_organisasi ?? null) }}" alt="" style="  display: block;
+                <img src="{{ Storage::url($item->struktur_organisasi ?? null) }}" alt="" style="  display: block;
                 margin-left: auto;
                 margin-right: auto;
                 max-width: 80%;">
  
-      </div>
+          </div>
+        @empty
+        <p>Struktur Organisasi Belum Diisi</p>
+        @endforelse
     </section><!-- End Team Section -->
 
   </main><!-- End #main -->

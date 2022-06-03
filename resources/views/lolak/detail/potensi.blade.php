@@ -32,14 +32,18 @@
     <!-- ======= Team Section ======= -->
     <section id="team" class="team ">
       <div class="container">
+        @forelse($potensi as $item)
           <div class="col-lg-12">
             <div class="member d-flex align-items-start">
               <div class="member-info">
                 <h4>Potensi</h4>
-                <p>{!! nl2br(($potensi->body)) !!}</p>
+                <p>{!! nl2br(($item->body)) !!}</p>
               </div>
             </div>
-      </div>
+          </div>
+          @empty
+
+          @endforelse
     </section><!-- End Team Section -->
 
   </main><!-- End #main -->
