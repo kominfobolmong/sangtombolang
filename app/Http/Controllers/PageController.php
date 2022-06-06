@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Infografis;
 use App\Models\News;
 use App\Models\Photo;
 use App\Models\Potensi;
@@ -25,13 +26,14 @@ class PageController extends Controller
     public function index(){
         $postssatu = News::with('tags')->take(1)->latest()->get();
         $posts = News::with('tags')->take(2)->latest()->get();
+        $infografis = Infografis::take(4)->latest()->get();
         // $postskegiatan = News::with('tags')->take(8)->latest()->get();
         $postskegiatan = Category::where('name','kegiatan')->with('news')->take(4)->latest()->get();
         $events = Event::take(2)->latest()->get();
         $sliders = Slider::latest()->get();
         $services = Service::all();
         return view('lolak/index',compact(
-            'posts','events','sliders','services','postssatu','postskegiatan'));
+            'posts','events','sliders','services','postssatu','postskegiatan','infografis'));
     }
 
     public function eventDetail(Request $request, $id){

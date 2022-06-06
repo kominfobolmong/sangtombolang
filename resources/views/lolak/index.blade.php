@@ -51,11 +51,15 @@
     </section><!-- End Hero -->
 
     <main id="main">
+
+
+      
+      
       <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-blog-posts" class="recent-blog-posts">
-
-      <div class="container" data-aos="fade-up">
-
+      <section id="recent-blog-posts" class="recent-blog-posts">
+        
+        <div class="container" data-aos="fade-up">
+          
         <div class="row g-5">
           <div class="col-6">
             <div class="section-title">
@@ -82,13 +86,13 @@
     
             </div>   
           </div>
-
+          
           <div class="col-6">
             <div class="section-title">
               <h2><i class="bi bi-newspaper"></i></h2>
               <p>Kegiatan</p>
             </div>
-    
+            
             <div class="row">
     
               @foreach ($postskegiatan as $keg)
@@ -108,7 +112,7 @@
               @endforeach
     
             </div>   
-
+            
             <div class="section-title" style="margin-bottom:-4%; margin-top:4%">
               <h2><i class="bi bi-newspaper"></i></h2>
               <p>Agenda</p>
@@ -141,7 +145,35 @@
       </div>
 
     </section><!-- End Recent Blog Posts Section -->
-      
+    
+    <!-- ======= Testimonials Section ======= -->
+ <section id="testimonials" class="testimonials mt-4 mb-4">
+   <div class="container" data-aos="zoom-in">
+
+     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+       <div class="swiper-wrapper">
+
+         @foreach ($infografis as $item)
+         <div class="swiper-slide">
+           <div class="testimonial-item">
+             <img src="{{ $item->image }}" class="testimonial-img" alt="">
+             {{-- <h3>Saul Goodman</h3>
+             <h4>Ceo &amp; Founder</h4> --}}
+             <p>
+               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+               Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+             </p>
+           </div>
+         </div><!-- End testimonial item -->
+         @endforeach
+
+       </div>
+       <div class="swiper-pagination"></div>
+     </div>
+
+   </div>
+ </section><!-- End Testimonials Section -->
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->

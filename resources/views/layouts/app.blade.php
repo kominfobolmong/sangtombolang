@@ -122,6 +122,11 @@
                         <span>Foto</span></a></li>
                         @endcan
 
+                        @can('infografis.index')
+                        <li class="{{ setActive('admin/infografis') }}"><a class="nav-link" href="{{ route('admin.infografis.index') }}"><i class="fas fa-laptop"></i>
+                        <span>Infografis</span></a></li>
+                        @endcan
+
                         @can('videos.index')
                             <li class="{{ setActive('admin/video') }}"><a class="nav-link" href="{{ route('admin.video.index') }}"><i class="fas fa-video"></i>
                         <span>Video</span></a></li>
