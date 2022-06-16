@@ -26,8 +26,8 @@
                         <div class="container" style="text-align: left">
                           @foreach ($postssatu as $post)
                           <div class="col-5">
-                            <h2 class="animate__animated animate__fadeInDown" style="float: left;">{!! \Illuminate\Support\Str::limit(nl2br($post->title), 80,'...') !!}</h2>
-                            <p class="animate__animated animate__fadeInUp" style="float: left;">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
+                            <h2 class="animate__animated animate__fadeInDown" style="float: left;">{!! \Illuminate\Support\Str::limit($post->title, 80) !!}</h2>
+                            <p class="animate__animated animate__fadeInUp" style="float: left;">{!! \Illuminate\Support\Str::limit($post->body, 200) !!}</p>
                             <a style="float: left;" href="{{ route('berita-detail',$post->id) }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Baca</a>
                           </div>
                           @endforeach
@@ -51,9 +51,6 @@
     </section><!-- End Hero -->
 
     <main id="main">
-
-
-      
       
       <!-- ======= Recent Blog Posts Section ======= -->
       <section id="recent-blog-posts" class="recent-blog-posts">
@@ -78,7 +75,7 @@
                     <span class="post-author"> / {{ $post->user->name }}</span>
                   </div>
                   <h3 class="post-title-recent">{{ $post->title }}</h3>
-                  <p class="recent-blog-body">{!! \Illuminate\Support\Str::limit(nl2br($post->body), 200,'...') !!}</p>
+                  <p class=" recent-blog-body">{{ strip_tags($post->body) }}</p>
                   <a href="{{ route('berita-detail',$post->id) }}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
@@ -161,7 +158,7 @@
              <h4>Ceo &amp; Founder</h4> --}}
              <p>
                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-               Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+               {{ $item->title }}
                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
              </p>
            </div>

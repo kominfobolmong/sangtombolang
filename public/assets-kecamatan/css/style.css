@@ -2016,7 +2016,6 @@ section {
 
 .recent-blog-body {
   color: rgba(var(--color-secondary-dark-rgb), 0.7);
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;

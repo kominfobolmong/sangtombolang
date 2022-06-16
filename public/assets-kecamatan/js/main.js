@@ -66,7 +66,7 @@
         delay: 5000,
         disableOnInteraction: false
       },
-      slidesPerView: '3',
+      slidesPerView: '1',
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',

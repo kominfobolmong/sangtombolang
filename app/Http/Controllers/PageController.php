@@ -27,7 +27,6 @@ class PageController extends Controller
         $postssatu = News::with('tags')->take(1)->latest()->get();
         $posts = News::with('tags')->take(2)->latest()->get();
         $infografis = Infografis::take(4)->latest()->get();
-        // $postskegiatan = News::with('tags')->take(8)->latest()->get();
         $postskegiatan = Category::where('name','kegiatan')->with('news')->take(4)->latest()->get();
         $events = Event::take(2)->latest()->get();
         $sliders = Slider::latest()->get();
