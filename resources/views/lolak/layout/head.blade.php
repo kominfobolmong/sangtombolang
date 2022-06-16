@@ -2,7 +2,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Website Kecamatan Poigar</title>
+@forelse($namakecamatan as $item)
+<title>Website Kecamatan {{ Str::ucfirst($item->nama_kecamatan) ?? null }}</title>
+@empty
+
+@endforelse
 <meta content="" name="description">
 <meta content="" name="keywords">
 
