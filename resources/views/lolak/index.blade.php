@@ -21,7 +21,7 @@
             <div class="carousel-inner" role="listbox">
 
                 @foreach ($sliders as $i => $slide)
-                <div class="carousel-item @if($i===0) active @endif" style=" background-image: url({{ $slide->image }})">
+                <div class="carousel-item @if($i===0) active @endif" style=" background-image: url({{ $slide['image'] }})">
                     <div class="carousel-container">
                         <div class="container" style="text-align: left">
                           @foreach ($postssatu as $post)
@@ -153,12 +153,12 @@
          @foreach ($infografis as $item)
          <div class="swiper-slide">
            <div class="testimonial-item">
-             <img src="{{ $item->image }}" class="testimonial-img" alt="">
+             <img src="{{ $item['image'] }}" class="testimonial-img" alt="">
              {{-- <h3>Saul Goodman</h3>
              <h4>Ceo &amp; Founder</h4> --}}
              <p>
                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-               {{ $item->title }}
+               {{ $item['title'] }}
                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
              </p>
            </div>

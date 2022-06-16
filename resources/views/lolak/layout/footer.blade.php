@@ -62,6 +62,6 @@
       &copy; Copyright <strong><span>Diskominfo</span></strong>. All Rights Reserved
   </div>
   <div class="credits">
-      Support by <a href="#">E-Government</a>
+      Support by <a href="https://diskominfo.bolmongkab.go.id">E-Government</a>
   </div>
 </div>
