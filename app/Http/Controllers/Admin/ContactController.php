@@ -104,8 +104,8 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         $this->validate($request, [
-            'email'   => 'required|unique:contacts,email',
-            'no_telp' => 'required|unique:contacts,no_telp',
+            'email'   => 'required',
+            'no_telp' => 'required',
             'alamat'  => 'required',
         ]);
 
